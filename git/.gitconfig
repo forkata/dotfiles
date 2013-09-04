@@ -1,0 +1,12 @@
+[init]
+	templatedir = /home/chris/.git-template
+
+[user]
+	name = Chris Todorov
+	email = chris@freerunningtechnologies.com
+
+[github]
+  user = forkata
+
+[merge]
+  tool = vimdiff
