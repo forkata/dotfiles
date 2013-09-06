@@ -13,3 +13,6 @@ fi
 # Customize to your needs...
 source $HOME/.rvm/scripts/rvm
 alias xclip="xclip -selection c -i"
+
+export EDITOR=vim
+export VISUAL=vim
