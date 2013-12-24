@@ -11,8 +11,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
-source $HOME/.rvm/scripts/rvm
 alias xclip="xclip -selection c -i"
-
-export EDITOR=vim
-export VISUAL=vim
+alias be="bundle exec"
+alias vssh="vagrant ssh"

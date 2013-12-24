@@ -14,12 +14,16 @@ call vundle#rc()
 
 Bundle 'tpope/vim-rails.git'
 Bundle 'bronson/vim-trailing-whitespace'
-Bundle 'tpope/vim-surround.git'
-Bundle 'tpope/vim-abolish.git'
-Bundle 'tpope/vim-fugitive.git'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-abolish'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-sleuth'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'mileszs/ack.vim'
+Bundle 'briancollins/vim-jst'
+Bundle 'mustache/vim-mode'
+Bundle 'Lokaltog/powerline'
 
 filetype plugin indent on     " required!
 
@@ -28,9 +32,10 @@ set shiftwidth=2
 set expandtab
 set wildmode=longest,list,full
 set nu
+set hlsearch
 
-autocmd BufWritePre * :FixWhitespace
-autocmd FileWritePre * :FixWhitespace
+" autocmd BufWritePre * :FixWhitespace
+" autocmd FileWritePre * :FixWhitespace
 
 map <F2> :FixWhitespace<CR>
 map! <F2> :FixWhitespace<CR>
@@ -39,5 +44,18 @@ colorscheme jellybeans
 
 set backupdir=~/.vimtmp//
 set directory=~/.vimtmp//
+
+set undofile                " Save undo's after file closes
+set undodir=$HOME/.vim/undo " where to save undo histories
+set undolevels=1000         " How many undos
+set undoreload=10000        " number of lines to save for undo
+
+" Syntax Highlight
+" au BufNewFile,BufRead *.ejs set filetype=html
+
+" Open markdown files with Chrome.
+autocmd BufEnter *.md exe 'noremap <F5> :!google-chrome %:p<CR>'
+
+let &colorcolumn=join(range(81,999),",")
 
 " vim: set ft=vim:
