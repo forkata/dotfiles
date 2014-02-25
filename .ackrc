@@ -1,2 +1,5 @@
 --ignore-dir=coverage
 --ignore-dir=vendor/bundle
+--type-add=css=.sass,.scss
+--type-add=html=.haml,.hbs
+--type-add=js=.coffee,.ejs

@@ -17,13 +17,16 @@ Bundle 'bronson/vim-trailing-whitespace'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-fugitive'
+Bundle 'int3/vim-extradite'
 Bundle 'tpope/vim-sleuth'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'mileszs/ack.vim'
+Bundle 'rking/ag.vim'
 Bundle 'briancollins/vim-jst'
 Bundle 'mustache/vim-mode'
 Bundle 'Lokaltog/powerline'
+Bundle 'sjl/gundo.vim'
 
 filetype plugin indent on     " required!
 
@@ -57,5 +60,6 @@ set undoreload=10000        " number of lines to save for undo
 autocmd BufEnter *.md exe 'noremap <F5> :!google-chrome %:p<CR>'
 
 let &colorcolumn=join(range(81,999),",")
+let g:agprg = 'ag --nogroup --nocolor --column'
 
 " vim: set ft=vim:
