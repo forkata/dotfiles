@@ -27,6 +27,7 @@ Bundle 'briancollins/vim-jst'
 Bundle 'mustache/vim-mode'
 Bundle 'Lokaltog/powerline'
 Bundle 'sjl/gundo.vim'
+Bundle 'rking/vim-detailed'
 
 filetype plugin indent on     " required!
 
