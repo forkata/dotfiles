@@ -28,6 +28,8 @@ Bundle 'mustache/vim-mode'
 Bundle 'Lokaltog/powerline'
 Bundle 'sjl/gundo.vim'
 Bundle 'rking/vim-detailed'
+Bundle 'bkad/CamelCaseMotion'
+Bundle 'kien/ctrlp.vim'
 
 filetype plugin indent on     " required!
 
@@ -37,6 +39,8 @@ set expandtab
 set wildmode=longest,list,full
 set nu
 set hlsearch
+set splitright
+set splitbelow
 
 " autocmd BufWritePre * :FixWhitespace
 " autocmd FileWritePre * :FixWhitespace

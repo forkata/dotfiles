@@ -14,7 +14,6 @@ fi
 alias xclip="xclip -selection c -i"
 alias be="bundle exec"
 alias vssh="vagrant ssh"
-alias bonobos-vpn="bash ~/Documents/Bonobos/bonobos-vpn.sh"
 alias json="python -mjson.tool"
 alias xml="xmllint --format -"
 
@@ -36,16 +35,15 @@ alias gaa='git add . && echo "git added ."'
 # alias gpa='echo "running: git push --all" && git push --all'
 alias gst='git status'
 alias gsH='git show'
+alias vgws='git status --porcelain --ignore-submodules | cut -f 3 -d' ' | xargs vim -pO ${1}'
 
-# tunes
-#
-alias adamtunes="mpv http://10.0.0.7:8000/"
-alias hawthtunes="mpv http://nestea:8000/"
-alias cktunes="mpv http://parting:8000/"
-alias jnormtunes="mpv http://10.0.0.31:8001/listen"
+alias update_ubuntu="sudo apt-get update && sudo apt-get upgrade"
 
 # As of nokogiri 1.6, it will compile its own version of libxml2 and libxslt.
 # # While this is convenient, it is slower, and uses about 100MB for each
 # # install. For a development machine (many gemsets, bundle install often) this
 # # is a better default.
-export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
+# export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
+
+# source .zshrc_local for any workstation specific settings
+test -r ~/.zshrc_local && source ~/.zshrc_local
