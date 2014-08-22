@@ -30,12 +30,15 @@ Bundle 'sjl/gundo.vim'
 Bundle 'rking/vim-detailed'
 Bundle 'bkad/CamelCaseMotion'
 Bundle 'kien/ctrlp.vim'
+Bundle 'Dkendal/fzy-vim'
+Bundle 'yaymukund/vim-rabl'
 
 filetype plugin indent on     " required!
 
 set tabstop=2
 set shiftwidth=2
 set expandtab
+
 set wildmode=longest,list,full
 set nu
 set hlsearch
@@ -58,11 +61,31 @@ set undodir=$HOME/.vim/undo " where to save undo histories
 set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
 
-" Syntax Highlight
-" au BufNewFile,BufRead *.ejs set filetype=html
+nnoremap <Leader><Leader>F :VFzyLsAg<CR>
+nnoremap <Leader><Leader>G :VFzyGem<CR>
+
+" Functions {{{1
+function! CtrlPGem()
+  let gem= input('gem name: ')
+  let gem_path= system('bundle show ' . gem)
+  let stripped_gem_path= substitute(gem_path,"\n","","g")
+  execute(':CtrlP ' . stripped_gem_path)
+endfunction
+"}}}1
+
+" Commmands {{{1
+command! CtrlPGem :call CtrlPGem()
+"}}}1
 
 " Open markdown files with Chrome.
 autocmd BufEnter *.md exe 'noremap <F5> :!google-chrome %:p<CR>'
+
+" Setup Ctrl-P search to use ag
+if executable("ag")
+  set grepprg=ag\ --nogroup\ --nocolor
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_use_caching = 0
+endif
 
 let &colorcolumn=join(range(81,999),",")
 let g:agprg = 'ag --nogroup --nocolor --column'

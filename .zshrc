@@ -16,6 +16,7 @@ alias be="bundle exec"
 alias vssh="vagrant ssh"
 alias json="python -mjson.tool"
 alias xml="xmllint --format -"
+alias chrome="google-chrome-unstable"
 
 #git
 # what i committed today
@@ -36,8 +37,20 @@ alias gaa='git add . && echo "git added ."'
 alias gst='git status'
 alias gsH='git show'
 alias vgws='git status --porcelain --ignore-submodules | cut -f 3 -d' ' | xargs vim -pO ${1}'
+alias glf='git log --pretty=oneline -S'
 
 alias update_ubuntu="sudo apt-get update && sudo apt-get upgrade"
+
+bindkey -v
+
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+bindkey '^r' history-incremental-search-backward
+
+export KEYTIMEOUT=1
 
 # As of nokogiri 1.6, it will compile its own version of libxml2 and libxslt.
 # # While this is convenient, it is slower, and uses about 100MB for each
