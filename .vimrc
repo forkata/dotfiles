@@ -9,35 +9,64 @@
  set nocompatible               " be iMproved
  filetype off                   " required!
 
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
-Bundle 'tpope/vim-rails.git'
-Bundle 'bronson/vim-trailing-whitespace'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-abolish'
-Bundle 'tpope/vim-fugitive'
-Bundle 'int3/vim-extradite'
-Bundle 'tpope/vim-sleuth'
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'mileszs/ack.vim'
-Bundle 'rking/ag.vim'
-Bundle 'briancollins/vim-jst'
-Bundle 'mustache/vim-mode'
-Bundle 'Lokaltog/powerline'
-Bundle 'sjl/gundo.vim'
-Bundle 'rking/vim-detailed'
-Bundle 'bkad/CamelCaseMotion'
-Bundle 'kien/ctrlp.vim'
-Bundle 'Dkendal/fzy-vim'
-Bundle 'yaymukund/vim-rabl'
+" don't vungle with my Vungle
+Plugin 'gmarik/Vundle.vim'
+
+" tpope is the man
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-sleuth'
+Plugin 'tpope/vim-eunuch'
+
+" more mvment
+Plugin 'bkad/CamelCaseMotion'
+
+" rails stuff
+Plugin 'thoughtbot/vim-rspec'
+Plugin 'int3/vim-extradite'
+
+" make preetty
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'rking/vim-detailed'
+
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'briancollins/vim-jst'
+Plugin 'yaymukund/vim-rabl'
+Plugin 'mustache/vim-mustache-handlebars'
+
+Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'sjl/gundo.vim'
+
+" fzy stuff
+Plugin 'mileszs/ack.vim'
+Plugin 'rking/ag.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Dkendal/fzy-vim'
 
 filetype plugin indent on     " required!
+
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%{SL('CapsLockStatusline')}%y%{SL('fugitive#statusline')}%#ErrorMsg#%{SL('SyntasticStatuslineFlag')}%*%=%-14.(%l,%c%V%)\ %P
 
 set tabstop=2
 set shiftwidth=2
 set expandtab
+
+if has("autocmd")
+  " set preferred spacing for these filetypes
+  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType sass setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType scss setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType haml setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
+end
 
 set wildmode=longest,list,full
 set nu
@@ -47,9 +76,6 @@ set splitbelow
 
 " autocmd BufWritePre * :FixWhitespace
 " autocmd FileWritePre * :FixWhitespace
-
-map <F2> :FixWhitespace<CR>
-map! <F2> :FixWhitespace<CR>
 
 colorscheme jellybeans
 
@@ -61,8 +87,18 @@ set undodir=$HOME/.vim/undo " where to save undo histories
 set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
 
+" Custom key maps
 nnoremap <Leader><Leader>F :VFzyLsAg<CR>
 nnoremap <Leader><Leader>G :VFzyGem<CR>
+
+map <Leader>W :FixWhitespace<CR>
+map! <Leader>W :FixWhitespace<CR>
+
+" Dispatch stuff
+map <Leader>r :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :Dispatch rspec-fast<CR>
 
 " Functions {{{1
 function! CtrlPGem()
@@ -71,6 +107,14 @@ function! CtrlPGem()
   let stripped_gem_path= substitute(gem_path,"\n","","g")
   execute(':CtrlP ' . stripped_gem_path)
 endfunction
+
+function! SL(function)
+  if exists('*'.a:function)
+    return call(a:function,[])
+  else
+    return ''
+  endif
+endfunction
 "}}}1
 
 " Commmands {{{1
@@ -78,7 +122,7 @@ command! CtrlPGem :call CtrlPGem()
 "}}}1
 
 " Open markdown files with Chrome.
-autocmd BufEnter *.md exe 'noremap <F5> :!google-chrome %:p<CR>'
+autocmd BufEnter *.md exe 'noremap <Leader><Leader>md :!google-chrome-unstable %:p<CR>'
 
 " Setup Ctrl-P search to use ag
 if executable("ag")
@@ -87,7 +131,16 @@ if executable("ag")
   let g:ctrlp_use_caching = 0
 endif
 
+"RSpec + Dispatch!
+let g:rspec_command = 'Dispatch bundle exec rspec {spec}'
+
+"Dispatch compilers
+let g:dispatch_compilers = { 'rspec-fast' : 'rspec' }
+
+" Highlight background after 80 chars
 let &colorcolumn=join(range(81,999),",")
+
+" Ag search options
 let g:agprg = 'ag --nogroup --nocolor --column'
 
 " vim: set ft=vim:
