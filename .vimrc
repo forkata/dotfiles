@@ -88,8 +88,11 @@ set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
 
 " Custom key maps
-nnoremap <Leader><Leader>F :VFzyLsAg<CR>
-nnoremap <Leader><Leader>G :VFzyGem<CR>
+" let mapleader = ' '
+map <Space> <Leader>
+
+nnoremap <Leader>F :VFzyLsAg<CR>
+nnoremap <Leader>G :VFzyGem<CR>
 
 map <Leader>W :FixWhitespace<CR>
 map! <Leader>W :FixWhitespace<CR>
@@ -99,6 +102,12 @@ map <Leader>r :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :Dispatch rspec-fast<CR>
+
+map <Leader>E :Extradite<CR>
+
+" .vimrc editing made easy
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " Functions {{{1
 function! CtrlPGem()
