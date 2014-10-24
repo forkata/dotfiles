@@ -96,6 +96,3 @@ export KEYTIMEOUT=1
 
 # source .zshrc_local for any workstation specific settings
 test -r ~/.zshrc.local && source ~/.zshrc.local
-
-# source .zsh/prompt.sh for prompt
-test -r ~/.zsh/prompt.zsh && source ~/.zsh/prompt.zsh
