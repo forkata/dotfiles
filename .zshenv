@@ -43,6 +43,7 @@ typeset -gU cdpath fpath mailpath path
 # Set the list of directories that Zsh searches for programs.
 path=(
   /usr/local/{bin,sbin}
+  ${GOPATH}/bin
   $path
 )
 
@@ -98,3 +99,10 @@ export TERM=screen-256color
 
 # Disable Guard notifications
 export GUARD_NOTIFY=false
+
+# Go stuff
+export GOROOT=/usr/bin/go
+export GOPATH=$HOME/go
+
+# Path
+export PATH=$PATH:$GOPATH/bin:/usr/local/heroku/bin

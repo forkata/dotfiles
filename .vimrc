@@ -21,7 +21,6 @@ Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-eunuch'
 
@@ -30,6 +29,7 @@ Plugin 'bkad/CamelCaseMotion'
 
 " rails stuff
 Plugin 'thoughtbot/vim-rspec'
+Plugin 'adammathys/vim-dispatch'
 Plugin 'int3/vim-extradite'
 
 " make preetty
@@ -88,14 +88,12 @@ set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
 
 " Custom key maps
-" let mapleader = ' '
-map <Space> <Leader>
+let mapleader = ' '
 
 nnoremap <Leader>F :VFzyLsAg<CR>
 nnoremap <Leader>G :VFzyGem<CR>
 
 map <Leader>W :FixWhitespace<CR>
-map! <Leader>W :FixWhitespace<CR>
 
 " Dispatch stuff
 map <Leader>r :call RunCurrentSpecFile()<CR>
@@ -104,10 +102,11 @@ map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :Dispatch rspec-fast<CR>
 
 map <Leader>E :Extradite<CR>
+map <Leader>B :Gblame<CR>
 
 " .vimrc editing made easy
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
+nmap <silent> <Leader>ev :e $MYVIMRC<CR>
+nmap <silent> <Leader>sv :so $MYVIMRC<CR>
 
 " Functions {{{1
 function! CtrlPGem()
@@ -144,7 +143,8 @@ endif
 let g:rspec_command = 'Dispatch bundle exec rspec {spec}'
 
 "Dispatch compilers
-let g:dispatch_compilers = { 'rspec-fast' : 'rspec' }
+let g:dispatch_compilers = { 'rspec-fast' : 'rspec',
+                           \ 'bundle exec': '' }
 
 " Highlight background after 80 chars
 let &colorcolumn=join(range(81,999),",")
