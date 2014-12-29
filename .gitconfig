@@ -1,9 +1,9 @@
 [init]
-	templatedir = /home/chris/.git-template
+  templatedir = /home/chris/.git-template
 
 [user]
-	name = Chris Todorov
-	email = chris@freerunningtechnologies.com
+  name = Chris Todorov
+  email = chris@freerunningtechnologies.com
 
 [github]
   user = forkata
@@ -11,10 +11,10 @@
 [merge]
   tool = vimdiff
 [push]
-	default = simple
+  default = simple
 [branch]
-	autosetuprebase = always
+  autosetuprebase = always
 [alias]
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 [core]
-	excludesfile = /home/chris/.gitignore_global
+  excludesfile = ~/.gitignore_global
