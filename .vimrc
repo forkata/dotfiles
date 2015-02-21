@@ -4,6 +4,9 @@ filetype off                   " required!
 
 set encoding=utf-8
 
+" OS X tweak
+syntax enable
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
@@ -36,6 +39,7 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'briancollins/vim-jst'
 Plugin 'yaymukund/vim-rabl'
 Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'cakebaker/scss-syntax.vim'
 
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'sjl/gundo.vim'
