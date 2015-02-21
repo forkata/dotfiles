@@ -1,5 +1,5 @@
 [init]
-  templatedir = /home/chris/.git-template
+  templatedir = ~/.git-template
 
 [user]
   name = Chris Todorov
@@ -17,4 +17,4 @@
 [alias]
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 [core]
-  excludesfile = /home/chris/.gitignore_global
+  excludesfile = ~/.gitignore_global
