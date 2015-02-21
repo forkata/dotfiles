@@ -9,6 +9,8 @@
  set nocompatible               " be iMproved
  filetype off                   " required!
 
+set encoding=utf-8
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
@@ -77,6 +79,9 @@ set splitbelow
 " autocmd BufWritePre * :FixWhitespace
 " autocmd FileWritePre * :FixWhitespace
 
+" Make tab/space characters visible
+set listchars=tab:▸\ ,trail:·,nbsp:¬,eol:¶,extends:»,precedes:«
+
 colorscheme jellybeans
 
 set backupdir=~/.vimtmp//
@@ -90,6 +95,8 @@ set undoreload=10000        " number of lines to save for undo
 " Custom key maps
 let mapleader = ' '
 
+nnoremap <Leader>e :FzyLsAg<CR>
+nnoremap <Leader>f :SFzyLsAg<CR>
 nnoremap <Leader>F :VFzyLsAg<CR>
 nnoremap <Leader>G :VFzyGem<CR>
 
@@ -107,6 +114,10 @@ map <Leader>B :Gblame<CR>
 " .vimrc editing made easy
 nmap <silent> <Leader>ev :e $MYVIMRC<CR>
 nmap <silent> <Leader>sv :so $MYVIMRC<CR>
+
+" Indent/outdent block
+nmap %% $>i}``
+nmap $$ $<i}``
 
 " Functions {{{1
 function! CtrlPGem()

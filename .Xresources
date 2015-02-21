@@ -1,0 +1,54 @@
+Xft.antialias: 1
+Xft.autohint: 0
+Xft.dpi: 96
+Xft.hinting: 1
+Xft.hintstyle: hintfull
+Xft.lcdfilter: lcddefault
+Xft.rgba: rgb
+
+URxvt.depth:          32
+URxvt.geometry:       90x30
+URxvt.transparent:    false
+URxvt.loginShell:     true
+URxvt.saveLines:      10000
+URxvt.internalBorder: 4
+
+URxvt.font:        xft:Monospace:size=10
+URxvt.boldFont:    xft:Monospace:size=10
+URxvt.lineSpace:   0
+! URxvt.letterSpace: -1
+
+URxvt.scrollBar: false
+
+URxvt.cursorBlink:     true
+URxvt.cursorUnderline: false
+
+URxvt.pointerBlank: true
+
+URxvt.background:  #000000
+URxvt.foreground:  #ffffff
+
+URxvt.color0: #888888
+URxvt.color8: #525252
+
+! red
+URxvt.color1: #cf6a4c
+URxvt.color9: #ff9d80
+! green
+URxvt.color2: #99ad6a
+URxvt.color10: #c3e6ad
+! yellow
+URxvt.color3: #fad07a
+URxvt.color11: #ffefbf
+! blue
+URxvt.color4: #8197bf
+URxvt.color12: #accaff
+! magenta
+URxvt.color5: #8787af
+URxvt.color13: #c4c4ff
+! cyan
+URxvt.color6: #8fbfdc
+URxvt.color14: #80bfaf
+! white
+URxvt.color7: #888888
+URxvt.color15: #e8e8d3
