@@ -1,13 +1,6 @@
-" Vim configuration file, in effect when invoked as "vi". The aim of this
-" configuration file is to provide a Vim environment as compatible with the
-" original vi as possible. Note that ~/.vimrc configuration files as other
-" configuration files in the runtimepath are still sourced.
-" When Vim is invoked differently ("vim", "view", "evim", ...) this file is
-" _not_ sourced; /etc/vim/vimrc and/or /etc/vim/gvimrc are.
-
 " Debian system-wide default configuration Vim
- set nocompatible               " be iMproved
- filetype off                   " required!
+set nocompatible               " be iMproved
+filetype off                   " required!
 
 set encoding=utf-8
 
@@ -73,6 +66,7 @@ end
 set wildmode=longest,list,full
 set nu
 set hlsearch
+set ls=2
 set splitright
 set splitbelow
 
