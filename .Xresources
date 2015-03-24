@@ -1,5 +1,5 @@
 Xft.antialias: 1
-Xft.autohint: 0
+Xft.autohint: -1
 Xft.dpi: 96
 Xft.hinting: 1
 Xft.hintstyle: hintfull
@@ -12,10 +12,12 @@ URxvt.transparent:    false
 URxvt.loginShell:     true
 URxvt.saveLines:      10000
 URxvt.internalBorder: 4
-
-URxvt.font:        xft:Monospace:size=10
-URxvt.boldFont:    xft:Monospace:size=10
-URxvt.lineSpace:   0
+URxvt.iso14755:       false
+URxvt.keysym.Home:    \033[1~
+URxvt.keysym.End:     \033[4~
+URxvt.font:           xft:Terminus:size=12
+URxvt.boldFont:       xft:Terminus:size=12
+URxvt.lineSpace:      0
 ! URxvt.letterSpace: -1
 
 URxvt.scrollBar: false
@@ -38,17 +40,22 @@ URxvt.color9: #ff9d80
 URxvt.color2: #99ad6a
 URxvt.color10: #c3e6ad
 ! yellow
-URxvt.color3: #fad07a
+URxvt.color3: #d8ad4c
 URxvt.color11: #ffefbf
 ! blue
-URxvt.color4: #8197bf
+URxvt.color4: #597bc5
 URxvt.color12: #accaff
 ! magenta
-URxvt.color5: #8787af
+URxvt.color5: #a037b0
 URxvt.color13: #c4c4ff
 ! cyan
-URxvt.color6: #8fbfdc
+URxvt.color6: #71b9f8
 URxvt.color14: #80bfaf
 ! white
-URxvt.color7: #888888
+URxvt.color7: #adadad
 URxvt.color15: #e8e8d3
+
+! clickable urls
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: /usr/bin/google-chrome-unstable
+URxvt.matcher.button: 1
