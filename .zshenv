@@ -43,8 +43,10 @@ typeset -gU cdpath fpath mailpath path
 # Set the list of directories that Zsh searches for programs.
 path=(
   /usr/local/{bin,sbin}
+  /usr/local/heroku/bin
   ${GOPATH}/bin
   ${HOME}/bin
+  ${HOME}/Projects/android-sdk-macosx/platform-tools
   $path
 )
 
@@ -88,6 +90,3 @@ export GUARD_NOTIFY=false
 # Go stuff
 export GOROOT=/usr/bin/go
 export GOPATH=$HOME/go
-
-# Path
-export PATH=$PATH:$GOPATH/bin:/usr/local/heroku/bin

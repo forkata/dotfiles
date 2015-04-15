@@ -29,3 +29,8 @@ Thumbs.db
 test-results.xml
 **/test-results.xml
 vendor/bundle
+
+# Docker #
+##########
+Dockerfile
+fig.yml
