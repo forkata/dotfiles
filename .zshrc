@@ -35,11 +35,10 @@ alias gp='git push'
 
 alias ga='git add'
 alias gaa='git add . && echo "git added ."'
-# alias gpa='echo "running: git push --all" && git push --all'
 
 alias gst='git status'
 alias gsH='git show'
-alias vgws='git status --porcelain --ignore-submodules | cut -f 3 -d' ' | xargs vim -pO ${1}'
+alias vgws='git status --porcelain --ignore-submodules | cut -f 3 -d" " | xargs vim -pO ${1}'
 
 alias glf='git log --pretty=oneline -S'
 
@@ -57,6 +56,13 @@ bindkey '^r' history-incremental-search-backward
 bindkey '^s' history-incremental-search-forward
 
 # Fzy Awesomeness
+function f() {
+  ag --nocolor -l -g "$1" "${2:-.}" | fzy
+}
+
+alias fv='vim $(f)'
+alias p='cd ~/Projects/$(ls ~/Projects | fzy)'
+
 #unsetopt flowcontrol
 #function insert-fzy-path-in-command-line() {
 #  local selected_path
@@ -68,7 +74,7 @@ bindkey '^s' history-incremental-search-forward
 #function insert-fzy-dir-in-command-line() {
 #  local selected_path
 #  echo
-#  selected_path=$(find -type d| fzy) || return
+#  selected_path=$(find -type d | fzy) || return
 #  eval 'LBUFFER="$LBUFFER$selected_path"'
 #  zle reset-prompt
 #}

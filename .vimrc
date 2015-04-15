@@ -18,6 +18,7 @@ Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-bundler'
 
 " more mvment
 Plugin 'bkad/CamelCaseMotion'
