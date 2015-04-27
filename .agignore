@@ -3,3 +3,4 @@ spec/fixtures/vcr_cassettes
 tmp/
 log/
 coverage/
+tags/
