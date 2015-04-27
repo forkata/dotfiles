@@ -9,13 +9,15 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
+# Some aliases
 alias xclip="xclip -selection c -i"
 alias be="bundle exec"
 alias vssh="vagrant ssh"
 alias json="python -mjson.tool"
 alias xml="xmllint --format -"
 alias chrome="google-chrome-unstable"
+alias man="gem man -ls"
+alias update_ubuntu="sudo apt-get update && sudo apt-get upgrade"
 
 # Git
 # what i committed today
@@ -42,7 +44,8 @@ alias vgws='git status --porcelain --ignore-submodules | cut -f 3 -d" " | xargs 
 
 alias glf='git log --pretty=oneline -S'
 
-alias update_ubuntu="sudo apt-get update && sudo apt-get upgrade"
+alias grubo='git status --porcelain | grep -v "^[D|R]" | cut -c4- | xargs rubocop'
+
 
 # Zsh command history search
 autoload history-search-end
