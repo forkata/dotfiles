@@ -16,11 +16,13 @@ function bootstrap() {
   # git
   ln -sf "$(pwd)/.gitconfig" "$HOME/.gitconfig"
   ln -sf "$(pwd)/.gitignore_global" "$HOME/.gitignore_global"
+  ln -sf "$(pwd)/.git-template" "$HOME/.git-template"
 
   # dev
   ln -sf "$(pwd)/.bundle" "$HOME/.bundle"
   ln -sf "$(pwd)/.ackrc" "$HOME/.ackrc"
   ln -sf "$(pwd)/.agignore" "$HOME/.agignore"
+  ln -sf "$(pwd)/.tmux.conf" "$HOME/.tmux.conf"
 
   # vim
   ln -sf "$(pwd)/.vimrc" "$HOME/.vimrc"
