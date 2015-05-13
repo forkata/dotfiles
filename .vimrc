@@ -83,8 +83,8 @@ set listchars=tab:▸\ ,trail:·,nbsp:¬,eol:¶,extends:»,precedes:«
 
 colorscheme jellybeans
 
-set backupdir=~/.vimtmp//
-set directory=~/.vimtmp//
+set backupdir=~/.vim/tmp//
+set directory=~/.vim/tmp//
 
 set undofile                " Save undo's after file closes
 set undodir=$HOME/.vim/undo " where to save undo histories
@@ -93,11 +93,6 @@ set undoreload=10000        " number of lines to save for undo
 
 " Custom key maps
 let mapleader = ' '
-
-nnoremap <Leader>e :FzyLsAg<CR>
-nnoremap <Leader>f :SFzyLsAg<CR>
-nnoremap <Leader>F :VFzyLsAg<CR>
-nnoremap <Leader>G :VFzyGem<CR>
 
 map <Leader>W :FixWhitespace<CR>
 
@@ -111,33 +106,39 @@ map <Leader>E :Extradite<CR>
 map <Leader>B :Gblame<CR>
 
 " .vimrc editing made easy
-nmap <silent> <Leader>ev :e $MYVIMRC<CR>
+nmap <silent> <Leader>ev :vs $MYVIMRC<CR>
 nmap <silent> <Leader>sv :so $MYVIMRC<CR>
 
 " Indent/outdent block
 nmap %% $>i}``
 nmap $$ $<i}``
 
-" Functions {{{1
-function! CtrlPGem()
-  let gem= input('gem name: ')
-  let gem_path= system('bundle show ' . gem)
-  let stripped_gem_path= substitute(gem_path,"\n","","g")
-  execute(':CtrlP ' . stripped_gem_path)
-endfunction
-
+" Functions
 function! SL(function)
   if exists('*'.a:function)
     return call(a:function,[])
   else
     return ''
+endfunction
+
+function! FzyCommand(choice_command, vim_command)
+  try
+    let output = system(a:choice_command . " | fzy ")
+  catch /Vim:Interrupt/
+    " Swallow errors from ^C, allow redraw! below
+  endtry
+  redraw!
+  if v:shell_error == 0 && !empty(output)
+    exec a:vim_command . ' ' . output
   endif
 endfunction
-"}}}1
 
-" Commmands {{{1
-command! CtrlPGem :call CtrlPGem()
-"}}}1
+" Fzy key maps
+nnoremap <leader>e :call FzyCommand("ag . --nocolor -l -g ''", ":e")<cr>
+nnoremap <leader>v :call FzyCommand("ag . --nocolor -l -g ''", ":vs")<cr>
+nnoremap <leader>s :call FzyCommand("ag . --nocolor -l -g ''", ":sp")<cr>
+nnoremap <leader>g :call FzyCommand("ag -g '' $(bundle show $(bundle list \| cut -f 4 -d' ' \| fzy))", ":vs")<cr>
+nnoremap <Leader>G :VFzyGem<CR>
 
 " Open markdown files with Chrome.
 autocmd BufEnter *.md exe 'noremap <Leader><Leader>md :!google-chrome-unstable %:p<CR>'
