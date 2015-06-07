@@ -4,9 +4,6 @@ filetype off                   " required!
 
 set encoding=utf-8
 
-" OS X tweak
-syntax enable
-
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
@@ -51,6 +48,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'Dkendal/fzy-vim'
 
 filetype plugin indent on     " required!
+syntax on
 
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%{SL('CapsLockStatusline')}%y%{SL('fugitive#statusline')}%#ErrorMsg#%{SL('SyntasticStatuslineFlag')}%*%=%-14.(%l,%c%V%)\ %P
 
@@ -106,8 +104,8 @@ map <Leader>E :Extradite<CR>
 map <Leader>B :Gblame<CR>
 
 " .vimrc editing made easy
-nmap <silent> <Leader>ev :vs $MYVIMRC<CR>
-nmap <silent> <Leader>sv :so $MYVIMRC<CR>
+nmap <silent> <Leader>c :vs $MYVIMRC<CR>
+nmap <silent> <Leader>o :so $MYVIMRC<CR>
 
 " Indent/outdent block
 nmap %% $>i}``
@@ -138,7 +136,6 @@ nnoremap <leader>e :call FzyCommand("ag . --nocolor -l -g ''", ":e")<cr>
 nnoremap <leader>v :call FzyCommand("ag . --nocolor -l -g ''", ":vs")<cr>
 nnoremap <leader>s :call FzyCommand("ag . --nocolor -l -g ''", ":sp")<cr>
 nnoremap <leader>g :call FzyCommand("ag -g '' $(bundle show $(bundle list \| cut -f 4 -d' ' \| fzy))", ":vs")<cr>
-nnoremap <Leader>G :VFzyGem<CR>
 
 " Open markdown files with Chrome.
 autocmd BufEnter *.md exe 'noremap <Leader><Leader>md :!google-chrome-unstable %:p<CR>'

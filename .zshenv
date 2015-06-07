@@ -44,7 +44,7 @@ typeset -gU cdpath fpath mailpath path
 path=(
   /usr/local/{bin,sbin}
   /usr/local/heroku/bin
-  ${GOPATH}/bin
+  /usr/local/go/bin
   ${HOME}/bin
   ${HOME}/Projects/android-sdk-macosx/platform-tools
   $path
@@ -87,6 +87,5 @@ export TERM=screen-256color
 # Disable Guard notifications
 export GUARD_NOTIFY=false
 
-# Go stuff
-export GOROOT=/usr/bin/go
-export GOPATH=$HOME/go
+# Explicitly set GOPATH
+export GOROOT=/usr/local/go

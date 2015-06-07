@@ -105,5 +105,8 @@ export REPORTTIME=10
 # # is a better default.
 export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 
+# Use hub
+eval "$(hub alias -s)"
+
 # source .zshrc_local for any workstation specific settings
 test -r ~/.zshrc.local && source ~/.zshrc.local
