@@ -10,11 +10,18 @@
 
 [merge]
   tool = vimdiff
+
 [push]
   default = simple
+
 [branch]
   autosetuprebase = always
+
 [alias]
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
 [core]
   excludesfile = ~/.gitignore_global
+
+[rebase]
+  autosquash = true
