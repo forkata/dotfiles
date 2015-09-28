@@ -79,6 +79,7 @@ set hlsearch
 set ls=2
 set splitright
 set splitbelow
+set fillchars+=vert:│
 
 " autocmd BufWritePre * :FixWhitespace
 " autocmd FileWritePre * :FixWhitespace
@@ -142,7 +143,7 @@ endfunction
 nnoremap <leader>e :call FzyCommand("ag . --nocolor -l -g ''", ":e")<cr>
 nnoremap <leader>v :call FzyCommand("ag . --nocolor -l -g ''", ":vs")<cr>
 nnoremap <leader>s :call FzyCommand("ag . --nocolor -l -g ''", ":sp")<cr>
-nnoremap <leader>g :call FzyCommand("ag -g '' $(bundle show $(bundle list \| cut -f 4 -d' ' \| fzy))", ":vs")<cr>
+nnoremap <leader>g :call FzyCommand("ag -g '' $(bundle show $(bundle list \| tail -n +2 \| cut -f 4 -d' ' \| fzy))", ":vs")<cr>
 
 " Open markdown files with Chrome.
 autocmd BufEnter *.md exe 'noremap <Leader><Leader>md :!google-chrome-unstable %:p<CR>'
