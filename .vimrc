@@ -31,6 +31,7 @@ Plugin 'int3/vim-extradite'
 " make preetty
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'rking/vim-detailed'
+Plugin 'jarednorman/syntastic'
 
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'briancollins/vim-jst'
@@ -51,6 +52,12 @@ filetype plugin indent on     " required!
 syntax on
 
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%{SL('CapsLockStatusline')}%y%{SL('fugitive#statusline')}%#ErrorMsg#%{SL('SyntasticStatuslineFlag')}%*%=%-14.(%l,%c%V%)\ %P
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_ruby_checkers = ['rubocop', 'mri']
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_mode_map = { "mode": "passive" }
 
 set tabstop=2
 set shiftwidth=2
