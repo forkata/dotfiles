@@ -65,6 +65,14 @@ local layouts =
 }
 -- }}}
 
+-- {{{ Wallpaper
+if beautiful.wallpaper then
+    for s = 1, screen.count() do
+        gears.wallpaper.maximized(beautiful.wallpaper, s, true)
+    end
+end
+-- }}}
+
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {}
@@ -106,6 +114,19 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- {{{ Wibox
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
+
+-- Create a simple battery widget
+batterywidget = wibox.widget.textbox()
+batterywidget:set_text(" | Battery | ")
+batterywidgettimer = timer({ timeout = 20 })
+batterywidgettimer:connect_signal("timeout",
+   function()
+      fh = assert(io.popen("acpi | cut -d, -f 2,3 -", "r"))
+      batterywidget:set_text(" |" .. fh:read("*l") .. " | ")
+      fh:close()
+   end
+)
+batterywidgettimer:start()
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -186,6 +207,7 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(batterywidget)
     right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
 
@@ -361,9 +383,9 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
-   -- float google hangouts and put them on tag [2][3]
+   -- float google hangouts
     { rule = { instance = "crx_nckgahadagoaajjgafhacjanaoiihapd" },
-      properties = { floating = true, tag = tags[3][2] } },
+      properties = { floating = true } },
 
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
@@ -374,7 +396,6 @@ awful.rules.rules = {
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c, startup)
-
     -- Enable sloppy focus
     c:connect_signal("mouse::enter", function(c)
         if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
