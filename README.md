@@ -23,3 +23,9 @@ folder so you might want to move them out of the way
 ```
 ./bootstrap.sh
 ```
+
+## Updating prezto
+```
+cd .zprezto
+git pull && git submodule update --init --recursive
+```
