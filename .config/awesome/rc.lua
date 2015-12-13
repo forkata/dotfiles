@@ -10,6 +10,10 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
+-- Net widgets
+local net_widgets = require("net_widgets")
+-- Lain widgets
+local lain = require("lain")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -115,18 +119,92 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
 
--- Create a simple battery widget
-batterywidget = wibox.widget.textbox()
-batterywidget:set_text(" | Battery | ")
-batterywidgettimer = timer({ timeout = 20 })
-batterywidgettimer:connect_signal("timeout",
-   function()
-      fh = assert(io.popen("acpi | cut -d, -f 2,3 -", "r"))
-      batterywidget:set_text(" |" .. fh:read("*l") .. " | ")
-      fh:close()
+-- Battery widgets
+baticon = wibox.widget.imagebox(beautiful.widget_battery)
+batwidget0 = lain.widgets.bat({
+   battery = "BAT0",
+   settings = function()
+      if bat_now.status == "Charging" then
+         baticon:set_image(beautiful.widget_ac)
+      elseif bat_now.perc == "N/A" then
+         widget:set_markup(" AC ")
+         baticon:set_image(beautiful.widget_ac)
+         return
+      elseif tonumber(bat_now.perc) <= 5 then
+         baticon:set_image(beautiful.widget_battery_empty)
+      elseif tonumber(bat_now.perc) <= 15 then
+         baticon:set_image(beautiful.widget_battery_low)
+      else
+         baticon:set_image(beautiful.widget_battery)
+      end
+         widget:set_markup(" " .. bat_now.perc .. "% ")
    end
-)
-batterywidgettimer:start()
+})
+
+batwidget1 = lain.widgets.bat({
+   battery = "BAT1",
+   settings = function()
+      if bat_now.status == "Charging" then
+         baticon:set_image(beautiful.widget_ac)
+      elseif bat_now.perc == "N/A" then
+         widget:set_markup(" AC ")
+         baticon:set_image(beautiful.widget_ac)
+         return
+      elseif tonumber(bat_now.perc) <= 5 then
+         baticon:set_image(beautiful.widget_battery_empty)
+      elseif tonumber(bat_now.perc) <= 15 then
+         baticon:set_image(beautiful.widget_battery_low)
+      else
+         baticon:set_image(beautiful.widget_battery)
+      end
+         widget:set_markup(" " .. bat_now.perc .. "% ")
+   end
+})
+
+local function battery_time_grabber()
+   f = io.popen("acpi -b | awk '{print $5}' | awk -F \":\" '{print $1\":\"$2 }'")
+   str = f:read()
+   f.close()
+   return str.." remaining"
+end
+
+local battery0_notify = nil
+function batwidget0:hide()
+   if battery_notify ~= nil then
+      naughty.destroy(battery_notify)
+      battery_notify = nil
+   end
+end
+
+function batwidget0:show(t_out)
+   batwidget0:hide()
+
+   battery_notify = naughty.notify({
+      preset = fs_notification_preset,
+      text = battery_time_grabber(),
+      timeout = t_out,
+   })
+end
+
+batwidget0:connect_signal('mouse::enter', function () batwidget0:show(0) end)
+batwidget0:connect_signal('mouse::leave', function () batwidget0:hide() end)
+
+batwidget1:connect_signal('mouse::enter', function () batwidget0:show(0) end)
+batwidget1:connect_signal('mouse::leave', function () batwidget0:hide() end)
+
+-- Separators
+spr = wibox.widget.textbox(' | ')
+
+-- Network widgets
+net_wireless = net_widgets.wireless({
+   interface  = "wlp3s0",
+   onclick    = terminal .. " -e sudo wifi-menu"
+})
+
+net_wired = net_widgets.indicator({
+   interface  = "enp0s25",
+   timeout    = 5
+})
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -207,7 +285,15 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
-    right_layout:add(batterywidget)
+    right_layout:add(spr)
+    right_layout:add(net_wired)
+    right_layout:add(spr)
+    right_layout:add(net_wireless)
+    right_layout:add(spr)
+    right_layout:add(baticon)
+    right_layout:add(batwidget0)
+    right_layout:add(batwidget1)
+    right_layout:add(spr)
     right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
 

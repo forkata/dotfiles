@@ -21,6 +21,16 @@ theme.border_normal = "#000000"
 theme.border_focus  = "#535d6c"
 theme.border_marked = "#91231c"
 
+themes_dir          = os.getenv("HOME") .. "/.config/awesome/themes/awesome"
+theme.wallpaper     = themes_dir .. "/background.png"
+
+theme.lain_icons    = os.getenv("HOME") .. "/.config/awesome/lain/icons/layout/default/"
+
+theme.widget_ac            = themes_dir .. "/icons/ac.png"
+theme.widget_battery       = themes_dir .. "/icons/battery.png"
+theme.widget_battery_low   = themes_dir .. "/icons/battery_low.png"
+theme.widget_battery_empty = themes_dir .. "/icons/battery_empty.png"
+
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:
@@ -72,9 +82,6 @@ theme.titlebar_maximized_button_normal_inactive = "/usr/share/awesome/themes/def
 theme.titlebar_maximized_button_focus_inactive  = "/usr/share/awesome/themes/default/titlebar/maximized_focus_inactive.png"
 theme.titlebar_maximized_button_normal_active = "/usr/share/awesome/themes/default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = "/usr/share/awesome/themes/default/titlebar/maximized_focus_active.png"
-
--- You can use your own command to set your wallpaper
-theme.wallpaper_cmd = { "feh --bg-fill /home/chris/Pictures/Backgrounds/stembolt-bg.png" }
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = "/usr/share/awesome/themes/default/layouts/fairhw.png"
