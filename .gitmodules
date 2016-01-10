@@ -1,0 +1,6 @@
+[submodule ".config/awesome/lain"]
+	path = .config/awesome/lain
+	url = git@github.com:copycat-killer/lain.git
+[submodule ".config/awesome/net_widgets"]
+	path = .config/awesome/net_widgets
+	url = git@github.com:plotnikovanton/net_widgets.git

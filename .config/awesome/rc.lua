@@ -116,59 +116,70 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- {{{ Wibox
+separators = lain.util.separators
+
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
 
 -- Battery widgets
-baticon = wibox.widget.imagebox(beautiful.widget_battery)
+baticon0 = wibox.widget.imagebox(beautiful.widget_battery)
 batwidget0 = lain.widgets.bat({
    battery = "BAT0",
    settings = function()
       if bat_now.status == "Charging" then
-         baticon:set_image(beautiful.widget_ac)
+         baticon0:set_image(beautiful.widget_ac)
       elseif bat_now.perc == "N/A" then
          widget:set_markup(" AC ")
-         baticon:set_image(beautiful.widget_ac)
+         baticon0:set_image(beautiful.widget_ac)
          return
       elseif tonumber(bat_now.perc) <= 5 then
-         baticon:set_image(beautiful.widget_battery_empty)
+         baticon0:set_image(beautiful.widget_battery_empty)
       elseif tonumber(bat_now.perc) <= 15 then
-         baticon:set_image(beautiful.widget_battery_low)
+         baticon0:set_image(beautiful.widget_battery_low)
       else
-         baticon:set_image(beautiful.widget_battery)
+         baticon0:set_image(beautiful.widget_battery)
       end
-         widget:set_markup(" " .. bat_now.perc .. "% ")
+      widget:set_markup(" " .. bat_now.perc .. "% ")
    end
 })
 
+baticon1 = wibox.widget.imagebox(beautiful.widget_battery)
 batwidget1 = lain.widgets.bat({
    battery = "BAT1",
    settings = function()
       if bat_now.status == "Charging" then
-         baticon:set_image(beautiful.widget_ac)
+         baticon1:set_image(beautiful.widget_ac)
       elseif bat_now.perc == "N/A" then
          widget:set_markup(" AC ")
-         baticon:set_image(beautiful.widget_ac)
+         baticon1:set_image(beautiful.widget_ac)
          return
       elseif tonumber(bat_now.perc) <= 5 then
-         baticon:set_image(beautiful.widget_battery_empty)
+         baticon1:set_image(beautiful.widget_battery_empty)
       elseif tonumber(bat_now.perc) <= 15 then
-         baticon:set_image(beautiful.widget_battery_low)
+         baticon1:set_image(beautiful.widget_battery_low)
       else
-         baticon:set_image(beautiful.widget_battery)
+         baticon1:set_image(beautiful.widget_battery)
       end
-         widget:set_markup(" " .. bat_now.perc .. "% ")
+      widget:set_markup(" " .. bat_now.perc .. "% ")
    end
 })
 
-local function battery_time_grabber()
-   f = io.popen("acpi -b | awk '{print $5}' | awk -F \":\" '{print $1\":\"$2 }'")
+local function battery_time_grabber(battery)
+   local f = nil
+   if battery == "BAT0" then
+      f = io.popen("acpi -b | sed -n 2p | awk '{print $5}' | awk -F \":\" '{print $1\":\"$2 }'")
+   elseif battery == "BAT1" then
+      f = io.popen("acpi -b | sed -n 1p | awk '{print $5}' | awk -F \":\" '{print $1\":\"$2 }'")
+   end
    str = f:read()
    f.close()
-   return str.." remaining"
+   if str == ":" then
+      str = "00:00"
+   end
+   return str .. " remaining"
 end
 
-local battery0_notify = nil
+local battery_notify = nil
 function batwidget0:hide()
    if battery_notify ~= nil then
       naughty.destroy(battery_notify)
@@ -181,7 +192,24 @@ function batwidget0:show(t_out)
 
    battery_notify = naughty.notify({
       preset = fs_notification_preset,
-      text = battery_time_grabber(),
+      text = battery_time_grabber("BAT0"),
+      timeout = t_out,
+   })
+end
+
+function batwidget1:hide()
+   if battery_notify ~= nil then
+      naughty.destroy(battery_notify)
+      battery_notify = nil
+   end
+end
+
+function batwidget1:show(t_out)
+   batwidget1:hide()
+
+   battery_notify = naughty.notify({
+      preset = fs_notification_preset,
+      text = battery_time_grabber("BAT1"),
       timeout = t_out,
    })
 end
@@ -189,11 +217,17 @@ end
 batwidget0:connect_signal('mouse::enter', function () batwidget0:show(0) end)
 batwidget0:connect_signal('mouse::leave', function () batwidget0:hide() end)
 
-batwidget1:connect_signal('mouse::enter', function () batwidget0:show(0) end)
-batwidget1:connect_signal('mouse::leave', function () batwidget0:hide() end)
+batwidget1:connect_signal('mouse::enter', function () batwidget1:show(0) end)
+batwidget1:connect_signal('mouse::leave', function () batwidget1:hide() end)
 
 -- Separators
-spr = wibox.widget.textbox(' | ')
+spr = wibox.widget.textbox(' ')
+arrl = wibox.widget.imagebox()
+arrl:set_image(beautiful.arrl)
+
+-- left
+arrl_dl = separators.arrow_left(beautiful.bg_focus, "alpha")
+arrl_ld = separators.arrow_left("alpha", beautiful.bg_focus)
 
 -- Network widgets
 net_wireless = net_widgets.wireless({
@@ -285,17 +319,30 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
+
+    local right_layout_toggle = true
+    local function right_layout_add (...)
+       local arg = {...}
+       if right_layout_toggle then
+          right_layout:add(arrl_ld)
+          for i, n in pairs(arg) do
+             right_layout:add(wibox.widget.background(n, beautiful.bg_focus))
+          end
+       else
+          right_layout:add(arrl_dl)
+          for i, n in pairs(arg) do
+            right_layout:add(n)
+          end
+       end
+       right_layout_toggle = not right_layout_toggle
+    end
+
     right_layout:add(spr)
-    right_layout:add(net_wired)
-    right_layout:add(spr)
-    right_layout:add(net_wireless)
-    right_layout:add(spr)
-    right_layout:add(baticon)
-    right_layout:add(batwidget0)
-    right_layout:add(batwidget1)
-    right_layout:add(spr)
-    right_layout:add(mytextclock)
-    right_layout:add(mylayoutbox[s])
+    right_layout:add(arrl)
+    right_layout_add(net_wired, net_wireless, spr)
+    right_layout_add(baticon0, batwidget0, baticon1, batwidget1)
+    right_layout_add(mytextclock, spr)
+    right_layout_add(mylayoutbox[s])
 
     -- Now bring it all together (with the tasklist in the middle)
     local layout = wibox.layout.align.horizontal()
