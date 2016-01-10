@@ -57,7 +57,7 @@ URxvt.color15: #e8e8d3
 
 ! clickable urls
 URxvt.perl-ext-common: default,matcher
-URxvt.url-launcher: /usr/bin/google-chrome-unstable
+URxvt.url-launcher: /usr/bin/google-chrome-stable
 URxvt.matcher.button: 1
 
 ! ------------------------------------------------------------------------------
