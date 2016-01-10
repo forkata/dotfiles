@@ -166,6 +166,6 @@ let g:dispatch_compilers = { 'rspec-fast' : 'rspec',
 let &colorcolumn=join(range(81,999),",")
 
 " Ag search options
-let g:agprg = 'ag --nogroup --nocolor --column'
+let g:ag_prg = 'ag --nogroup --nocolor --column'
 
 " vim: set ft=vim:

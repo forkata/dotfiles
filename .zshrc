@@ -65,6 +65,7 @@ function f() {
 
 alias fv='vim $(f)'
 alias p='cd ~/Projects/$(ls ~/Projects | fzy)'
+alias s="scrot -s -e 'mv $f ~/Screenshots/.'"
 
 #unsetopt flowcontrol
 #function insert-fzy-path-in-command-line() {
