@@ -16,7 +16,6 @@ alias vssh="vagrant ssh"
 alias json="python -mjson.tool"
 alias xml="xmllint --format -"
 alias chrome="google-chrome-unstable"
-alias man="gem man -ls"
 alias update_ubuntu="sudo apt-get update && sudo apt-get upgrade"
 
 # Git
@@ -65,6 +64,8 @@ function f() {
 
 alias fv='vim $(f)'
 alias p='cd ~/Projects/$(ls ~/Projects | fzy)'
+
+# Scrot
 alias s='scrot -s -e "mv \$f ~/Screenshots/"'
 
 #unsetopt flowcontrol

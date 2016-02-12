@@ -61,6 +61,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_ruby_checkers = ['rubocop', 'mri']
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_haml_checkers = ['haml_lint']
 let g:syntastic_mode_map = { "mode": "passive" }
 
 set tabstop=2
@@ -114,6 +115,8 @@ map <Leader>a :Dispatch rspec-fast<CR>
 
 map <Leader>E :Extradite<CR>
 map <Leader>B :Gblame<CR>
+map <Leader>S :SyntasticCheck<CR>
+map <Leader>R :SyntasticReset<CR>
 
 " .vimrc editing made easy
 nmap <silent> <Leader>c :vs $MYVIMRC<CR>
@@ -146,6 +149,7 @@ endfunction
 " Fzy key maps
 nnoremap <leader>e :call FzyCommand("ag . --nocolor -l -g ''", ":e")<cr>
 nnoremap <leader>v :call FzyCommand("ag . --nocolor -l -g ''", ":vs")<cr>
+nnoremap <leader>h :call FzyCommand("ag . --nocolor -l -g ''", ":sp")<cr>
 nnoremap <leader>s :call FzyCommand("ag . --nocolor -l -g ''", ":sp")<cr>
 nnoremap <leader>g :call FzyCommand("ag -g '' $(bundle show $(bundle list \| tail -n +2 \| cut -f 4 -d' ' \| fzy))", ":vs")<cr>
 
