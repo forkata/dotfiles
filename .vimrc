@@ -122,6 +122,9 @@ map <Leader>R :SyntasticReset<CR>
 nmap <silent> <Leader>c :vs $MYVIMRC<CR>
 nmap <silent> <Leader>o :so $MYVIMRC<CR>
 
+" Finish pivotal stories
+nnoremap <Leader>p o<cr>[Finishes <esc>"*pA]]
+
 " Indent/outdent block
 nmap %% $>i}``
 nmap $$ $<i}``
