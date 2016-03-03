@@ -97,6 +97,9 @@ colorscheme jellybeans
 set backupdir=~/.vim/tmp//
 set directory=~/.vim/tmp//
 
+" Force backup copy to true
+set backupcopy=yes
+
 set undofile                " Save undo's after file closes
 set undodir=$HOME/.vim/undo " where to save undo histories
 set undolevels=1000         " How many undos
