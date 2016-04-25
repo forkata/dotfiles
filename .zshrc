@@ -45,6 +45,8 @@ alias glf='git log --pretty=oneline -S'
 
 alias grubo='git status --porcelain | grep -v "^[D|R]" | cut -c4- | xargs rubocop'
 
+# Rails/Ruby aliases
+alias pspec='RAILS_ENV=test be rake parallel:spec'
 
 # Zsh command history search
 autoload history-search-end
