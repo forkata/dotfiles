@@ -1,23 +1,25 @@
-# Git pre-commit hook to check all staged Ruby (*.rb/haml/coffee) files 
-# for Pry binding references
-#
 # Installation
 #
 #   ln -s /path/to/pre-commit.sh /path/to/project/.git/hooks/pre-commit
 #
-# Based on 
-#
-#   http://codeinthehole.com/writing/tips-for-using-a-git-pre-commit-hook/
-#   http://mark-story.com/posts/view/using-git-commit-hooks-to-prevent-stupid-mistakes
-#   https://gist.github.com/3266940
-#
-FILES_PATTERN='\.(rb|haml|coffee)(\..+)?$'
+
+# binding.pry check
+FILES_PATTERN='\.(rb|erb|haml|coffee)(\..+)?$'
 FORBIDDEN='binding.pry'
 
-git diff --cached --name-only | \
+if git diff --cached --name-only | \
     grep -E $FILES_PATTERN | \
-    GREP_COLOR='4;5;37;41' xargs grep --color --with-filename -n $FORBIDDEN && \
-    echo 'COMMIT REJECTED' && \
+    GREP_COLOR='4;5;37;41' xargs grep --color --with-filename -n $FORBIDDEN;
+then
+    echo 'It seems you left a binding.pry. You should remove it.' && \
     exit 1
+fi
+
+# focus check
+if git grep --cached -n -E "^\s+(it|describe).*((focus:|:focus\s*=>)\s*true)|(:focus)" -- '*_spec.rb';
+then
+    echo "It seems you left focused specs. You should remove :focus tags.";
+    exit 1
+fi
 
 exit 0
