@@ -240,6 +240,21 @@ net_wired = net_widgets.indicator({
    timeout    = 5
 })
 
+-- CPU / Memory widgets
+cpuicon = wibox.widget.imagebox(beautiful.widget_cpu)
+mycpu = lain.widgets.cpu({
+   settings = function()
+      widget:set_markup(cpu_now.usage .. "% ")
+   end
+})
+
+memicon = wibox.widget.imagebox(beautiful.widget_mem)
+mymem = lain.widgets.mem({
+   settings= function()
+      widget:set_markup(mem_now.used .. "M ")
+   end
+})
+
 -- Create a wibox for each screen and add it
 mywibox = {}
 mypromptbox = {}
@@ -339,6 +354,7 @@ for s = 1, screen.count() do
 
     right_layout:add(spr)
     right_layout:add(arrl)
+    right_layout_add(cpuicon, mycpu, memicon, mymem, spr)
     right_layout_add(net_wired, net_wireless, spr)
     right_layout_add(baticon0, batwidget0, baticon1, batwidget1)
     right_layout_add(mytextclock, spr)
