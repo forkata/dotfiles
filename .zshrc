@@ -1,116 +1,23 @@
-# Executes commands at the start of an interactive session.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
+autoload -Uz compinit promptinit
+compinit
+promptinit
 
-# Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
-
-# Some aliases
-alias xclip="xclip -selection c -i"
-alias be="bundle exec"
-alias vssh="vagrant ssh"
-alias json="python -mjson.tool"
-alias xml="xmllint --format -"
-alias chrome="google-chrome-unstable"
-alias update_ubuntu="sudo apt-get update && sudo apt-get upgrade"
-
-# Git
-# what i committed today
-alias glT='git log --since="6am" --format="%s%n%b" --author="$(git config --global user.name)"| grep "^[^(Change-id)]"'
-
-alias gb='git branch'
-alias gba='git branch -a'
-alias gcv='git commit -v'
-alias gcm='git commit -m'
-alias gca='git commit -a'
-
-alias gd='git diff'
-alias gdc='git diff --cached'
-
-alias gl='git pull'
-alias gp='git push'
-
-alias ga='git add'
-alias gaa='git add . && echo "git added ."'
-
-alias gst='git status'
-alias gsH='git show'
-alias vgws='git status --porcelain --ignore-submodules | cut -f 3 -d" " | xargs vim -pO ${1}'
-
-alias glf='git log --pretty=oneline -S'
-
-alias grubo='git status --porcelain | grep -v "^[D|R]" | cut -c4- | xargs rubocop'
-
-# Rails/Ruby aliases
-alias pspec='RAILS_ENV=test be rake parallel:spec'
-
-# Zsh command history search
-autoload history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-
-bindkey "^p" history-beginning-search-backward-end
-bindkey "^n" history-beginning-search-forward-end
-
-bindkey '^r' history-incremental-search-backward
-bindkey '^s' history-incremental-search-forward
-
-# Fzy Awesomeness
-function f() {
-  ag --nocolor -l -g "$1" "${2:-.}" | fzy
-}
-
-alias fv='vim $(f)'
-alias p='cd ~/Projects/$(ls ~/Projects | fzy)'
-
-# Scrot
-alias s='scrot -s -e "mv \$f ~/Screenshots/"'
-
-#unsetopt flowcontrol
-#function insert-fzy-path-in-command-line() {
-#  local selected_path
-#  echo
-#  selected_path=$(ag . -l -g '' | fzy) || return
-#  eval 'LBUFFER="$LBUFFER$selected_path"'
-#  zle reset-prompt
-#}
-#function insert-fzy-dir-in-command-line() {
-#  local selected_path
-#  echo
-#  selected_path=$(find -type d | fzy) || return
-#  eval 'LBUFFER="$LBUFFER$selected_path"'
-#  zle reset-prompt
-#}
-#zle -N insert-fzy-path-in-command-line
-#zle -N insert-fzy-dir-in-command-line
-#bindkey "^f" insert-fzy-path-in-command-line
-#bindkey "^i" insert-fzy-dir-in-command-line
-
-# Key bindings
-bindkey -v
-
-bindkey '^P' up-history
-bindkey '^N' down-history
-bindkey '^?' backward-delete-char
-bindkey '^h' backward-delete-char
-bindkey '^w' backward-kill-word
+# Dir colors.
+LS_COLORS='rs=0:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:tw=30;42:ow=34;42:st=37;44:ex=01;32:';
+export LS_COLORS
 
 export KEYTIMEOUT=1
 
 export REPORTTIME=10
 
-# As of nokogiri 1.6, it will compile its own version of libxml2 and libxslt.
-# # While this is convenient, it is slower, and uses about 100MB for each
-# # install. For a development machine (many gemsets, bundle install often) this
-# # is a better default.
+# For a development machine this is a better default.
 export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 
-# Use hub
-eval "$(hub alias -s)"
+# Source stuff.
+source ~/.zsh/aliases/git.sh
+source ~/.zsh/aliases/bin.sh
+source ~/.zsh/bindings.sh
+source ~/.zsh/prompt.sh
 
-# source .zshrc_local for any workstation specific settings
+# Source .zshrc_local for any workstation specific settings.
 test -r ~/.zshrc.local && source ~/.zshrc.local

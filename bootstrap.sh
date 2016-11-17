@@ -5,13 +5,12 @@ git pull origin master
 
 function bootstrap() {
   # zsh
-  ln -sf "$(pwd)/.zprezto" "$HOME/.zprezto"
   ln -sf "$(pwd)/.zlogin" "$HOME/.zlogin"
   ln -sf "$(pwd)/.zlogout" "$HOME/.zlogout"
   ln -sf "$(pwd)/.zprofile" "$HOME/.zprofile"
-  ln -sf "$(pwd)/.zpreztorc" "$HOME/.zpreztorc"
   ln -sf "$(pwd)/.zshenv" "$HOME/.zshenv"
   ln -sf "$(pwd)/.zshrc" "$HOME/.zshrc"
+  ln -sf "$(pwd)/.zsh" "$HOME/.zsh"
 
   # git
   ln -sf "$(pwd)/.gitconfig" "$HOME/.gitconfig"
