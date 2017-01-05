@@ -53,6 +53,12 @@ Plugin 'rking/ag.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Dkendal/fzy-vim'
 
+" testing
+Plugin 'benmills/vimux'
+Plugin 'janko-m/vim-test'
+let test#strategy = "vimux"
+map <Leader>t :TestFile --format documentation<CR>
+
 filetype plugin indent on     " required!
 syntax on
 
@@ -105,6 +111,9 @@ set undofile                " Save undo's after file closes
 set undodir=$HOME/.vim/undo " where to save undo histories
 set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
+
+" Set tags location
+set tags=./tags,tags;
 
 " Custom key maps
 let mapleader = ' '
