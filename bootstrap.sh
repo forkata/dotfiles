@@ -22,6 +22,7 @@ function bootstrap() {
   ln -sf "$(pwd)/.ackrc" "$HOME/.ackrc"
   ln -sf "$(pwd)/.agignore" "$HOME/.agignore"
   ln -sf "$(pwd)/.tmux.conf" "$HOME/.tmux.conf"
+  ln -sf "$(pwd)/.xbindkeysrc" "$HOME/.xbindkeysrc"
 
   # vim
   ln -sf "$(pwd)/.vimrc" "$HOME/.vimrc"
