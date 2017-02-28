@@ -5,6 +5,11 @@
 "amixer set Master toggle"
   XF86AudioMute
 
+"xbacklight -dec 10%"
+  XF86MonBrightnessDown
+"xbacklight -inc 10%"
+  XF86MonBrightnessUp
+
 #
 # Spotify D-Bus controls
 #

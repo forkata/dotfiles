@@ -23,6 +23,10 @@ function bootstrap() {
 
   # vim
   ln -sf "$(pwd)/.vimrc" "$HOME/.vimrc"
+
+  # X
+  ln -sf "$(pwd)/.Xmodmap" "$HOME/.Xmodmap"
+  ln -sf "$(pwd)/.Xresources" "$HOME/.Xresources"
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
