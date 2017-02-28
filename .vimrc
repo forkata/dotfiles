@@ -1,7 +1,4 @@
 " Debian system-wide default configuration Vim
-set nocompatible               " be iMproved
-filetype off                   " required!
-
 set encoding=utf-8
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -23,6 +20,7 @@ Plugin 'tpope/vim-bundler'
 
 " more mvment
 Plugin 'bkad/CamelCaseMotion'
+Plugin 'terryma/vim-multiple-cursors'
 
 " rails stuff
 Plugin 'thoughtbot/vim-rspec'
@@ -56,9 +54,9 @@ Plugin 'Dkendal/fzy-vim'
 " testing
 Plugin 'benmills/vimux'
 Plugin 'janko-m/vim-test'
-let test#strategy = "vimux"
-map <Leader>t :TestFile --format documentation<CR>
 
+set nocompatible               " be iMproved
+filetype off                   " required!
 filetype plugin indent on     " required!
 syntax on
 
@@ -122,7 +120,7 @@ map <Leader>W :FixWhitespace<CR>
 
 " Dispatch stuff
 map <Leader>r :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>n :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :Dispatch rspec-fast<CR>
 
@@ -130,6 +128,10 @@ map <Leader>E :Extradite<CR>
 map <Leader>B :Gblame<CR>
 map <Leader>S :SyntasticCheck<CR>
 map <Leader>R :SyntasticReset<CR>
+
+" vim-test key maps
+let test#strategy = "vimux"
+nnoremap <Leader>t :TestFile --format documentation<CR>
 
 " .vimrc editing made easy
 nmap <silent> <Leader>c :vs $MYVIMRC<CR>
