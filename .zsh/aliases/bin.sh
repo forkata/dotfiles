@@ -26,3 +26,4 @@ function f() {
 
 alias fv='vim $(f)'
 alias p='cd ~/Projects/$(ls ~/Projects | fzy)'
+alias d='cd ~/Documents/$(ls ~/Documents | fzy)'
