@@ -188,6 +188,9 @@ let g:rspec_command = 'Dispatch bundle exec rspec {spec}'
 let g:dispatch_compilers = { 'rspec-fast' : 'rspec',
                            \ 'bundle exec': '' }
 
+" JSX syntax highlighting in js files
+let g:jsx_ext_required = 0
+
 " Highlight background after 80 chars
 let &colorcolumn=join(range(81,999),",")
 
