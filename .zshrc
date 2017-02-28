@@ -18,6 +18,7 @@ source ~/.zsh/aliases/git.sh
 source ~/.zsh/aliases/bin.sh
 source ~/.zsh/bindings.sh
 source ~/.zsh/prompt.sh
+source ~/.zsh/history.sh
 
 # Source .zshrc_local for any workstation specific settings.
 test -r ~/.zshrc.local && source ~/.zshrc.local
