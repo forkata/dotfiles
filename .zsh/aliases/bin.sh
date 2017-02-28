@@ -6,7 +6,7 @@ alias xclip="xclip -selection c -i"
 alias vssh="vagrant ssh"
 alias json="python -mjson.tool"
 alias xml="xmllint --format -"
-alias chrome="google-chrome-unstable"
+alias chrome="google-chrome-stable"
 alias update_ubuntu="sudo apt-get update && sudo apt-get upgrade"
 
 # Rails/Ruby aliases
