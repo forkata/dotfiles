@@ -15,10 +15,9 @@ URxvt.internalBorder: 4
 URxvt.iso14755:       false
 URxvt.keysym.Home:    \033[1~
 URxvt.keysym.End:     \033[4~
-URxvt.font:           xft:Terminus:size=12
-URxvt.boldFont:       xft:Terminus:size=12
+URxvt.font:           xft:xos4 Terminus:size=12
+URxvt.boldFont:       xft:xos4 Terminus:size=12
 URxvt.lineSpace:      0
-! URxvt.letterSpace: -1
 
 URxvt.scrollBar: false
 
