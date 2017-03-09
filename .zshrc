@@ -20,5 +20,9 @@ source ~/.zsh/bindings.sh
 source ~/.zsh/prompt.sh
 source ~/.zsh/history.sh
 
+# Chruby
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
+
 # Source .zshrc_local for any workstation specific settings.
 test -r ~/.zshrc.local && source ~/.zshrc.local

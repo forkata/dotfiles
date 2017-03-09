@@ -1,16 +1,11 @@
 #
-# Defines environment variables.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
-
-#
 # Browser
 #
 
 if [[ "$OSTYPE" == darwin* ]]; then
   export BROWSER='open'
+else
+  export BROWSER='google-chrome-stable'
 fi
 
 #
