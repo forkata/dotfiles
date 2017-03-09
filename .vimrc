@@ -32,6 +32,7 @@ Plugin 'nanotech/jellybeans.vim'
 Plugin 'rking/vim-detailed'
 Plugin 'jarednorman/syntastic'
 
+" syntax highlighting
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'briancollins/vim-jst'
 Plugin 'yaymukund/vim-rabl'
@@ -41,6 +42,7 @@ Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-lua-ftplugin'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+Plugin 'elixir-lang/vim-elixir'
 
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'sjl/gundo.vim'
