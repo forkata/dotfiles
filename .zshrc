@@ -16,6 +16,7 @@ export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 # Source stuff.
 source ~/.zsh/aliases/git.sh
 source ~/.zsh/aliases/bin.sh
+source ~/.zsh/aliases/arch.sh
 source ~/.zsh/bindings.sh
 source ~/.zsh/prompt.sh
 source ~/.zsh/history.sh
