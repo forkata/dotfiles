@@ -10,7 +10,7 @@ alias gba='git branch -a'
 
 alias gc='git commit -v'
 alias gcm='git commit -m'
-alias gca='git commit -a'
+alias gca='git commit --amend --no-edit'
 
 alias gd='git diff'
 alias gdc='git diff --cached'
@@ -31,3 +31,4 @@ alias glf='git log --pretty=oneline -S'
 alias grubo='git status --porcelain | grep -v "^[D|R]" | cut -c4- | xargs rubocop'
 
 alias gco='git checkout `git branch | fzy`'
+alias gcb='git checkout -b'
