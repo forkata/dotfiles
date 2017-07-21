@@ -1,3 +1,3 @@
-alias yu="yaourt -Syu"
+alias yu="yaourt -Syua"
 alias ys="yaourt -Ss"
 alias yi="yaourt -S"

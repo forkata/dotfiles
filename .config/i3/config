@@ -134,6 +134,7 @@ bindsym $mod+r mode "resize"
 
 # Other commands
 bindsym $mod+space exec rofi -show run
+bindsym --release Control+Shift+k exec scrot -s
 
 # hide title bars and only add 1 pixel border
 new_window pixel 1

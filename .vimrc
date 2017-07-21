@@ -43,6 +43,7 @@ Plugin 'xolox/vim-lua-ftplugin'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'leafgarland/typescript-vim'
 
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'sjl/gundo.vim'
