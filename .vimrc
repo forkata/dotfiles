@@ -17,6 +17,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-rhubarb'
 
 " more mvment
 Plugin 'bkad/CamelCaseMotion'
@@ -30,7 +31,10 @@ Plugin 'int3/vim-extradite'
 " make preetty
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'rking/vim-detailed'
-Plugin 'jarednorman/syntastic'
+
+" linting
+" Plugin 'jarednorman/syntastic'
+Plugin 'w0rp/ale'
 
 " syntax highlighting
 Plugin 'kchmck/vim-coffee-script'
@@ -58,19 +62,38 @@ Plugin 'Dkendal/fzy-vim'
 Plugin 'benmills/vimux'
 Plugin 'janko-m/vim-test'
 
+" TypeScript server integration
+" Plugin 'Quramy/tsuquyomi'
+
 set nocompatible               " be iMproved
 filetype off                   " required!
+
+" Ale
+let &runtimepath.=',~/.vim/bundle/ale'
+let g:ale_linters = {
+\   'javascript': ['eslint', 'prettier'],
+\   'ruby': ['breakman', 'reek', 'rubocop', 'ruby'],
+\   'css': ['stylelint'],
+\   'sass': ['stylelint'],
+\   'scss': ['stylelint'],
+\   'haml': ['hamllint'],
+\   'typescript': ['tslint', 'tsserver']
+\}
+let g:ale_sign_column_always = 1
 filetype plugin indent on     " required!
 syntax on
 
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%{SL('CapsLockStatusline')}%y%{SL('fugitive#statusline')}%#ErrorMsg#%{SL('SyntasticStatuslineFlag')}%*%=%-14.(%l,%c%V%)\ %P
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%{SL('CapsLockStatusline')}%#ErrorMsg#%{SL('SyntasticStatuslineFlag')}%*%=%-14.(%l,%c%V%)\ %P
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_ruby_checkers = ['rubocop', 'mri']
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_haml_checkers = ['haml_lint']
-let g:syntastic_mode_map = { "mode": "passive" }
+" Syntastic
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_ruby_checkers = ['rubocop', 'mri']
+" let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_haml_checkers = ['haml_lint']
+" let g:syntastic_scss_checkers = ['stylelint']
+" let g:syntastic_css_checkers = ['stylelint']
+" let g:syntastic_mode_map = { "mode": "passive" }
 
 set tabstop=2
 set shiftwidth=2
@@ -125,7 +148,6 @@ map <Leader>W :FixWhitespace<CR>
 map <Leader>r :call RunCurrentSpecFile()<CR>
 map <Leader>n :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :Dispatch rspec-fast<CR>
 
 map <Leader>E :Extradite<CR>
 map <Leader>B :Gblame<CR>
