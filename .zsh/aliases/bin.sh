@@ -8,6 +8,7 @@ alias json="python -mjson.tool"
 alias xml="xmllint --format -"
 alias chrome="google-chrome-stable"
 alias update_ubuntu="sudo apt-get update && sudo apt-get upgrade"
+alias ag="rj"
 
 # Rails/Ruby aliases
 alias be="bundle exec"
