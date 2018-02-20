@@ -96,6 +96,7 @@ if has("autocmd")
   autocmd FileType scss setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType haml setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
+  autocmd FileType gitcommit setlocal spell
 end
 
 set wildmode=longest,list,full
