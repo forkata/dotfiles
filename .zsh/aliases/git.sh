@@ -17,6 +17,7 @@ alias gdc='git diff --cached'
 
 alias gl='git pull'
 alias gp='git push'
+alias gpl='git push --force-with-lease'
 
 alias ga='git add'
 alias gaa='git add . && echo "git added ."'
@@ -32,3 +33,5 @@ alias grubo='git status --porcelain | grep -v "^[D|R]" | cut -c4- | xargs ruboco
 
 alias gco='git checkout `git branch | fzy`'
 alias gcb='git checkout -b'
+
+alias delete_merged_branches='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'

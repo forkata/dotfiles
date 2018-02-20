@@ -9,7 +9,7 @@ alias json="python -mjson.tool"
 alias xml="xmllint --format -"
 alias chrome="google-chrome-stable"
 alias update_ubuntu="sudo apt-get update && sudo apt-get upgrade"
-alias ag="rj"
+alias ag="rg"
 alias docker-stembolt-ci="docker pull registry.stembolt.io/ci"
 
 # Rails/Ruby aliases
