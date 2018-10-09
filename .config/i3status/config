@@ -11,6 +11,7 @@ general {
         interval = 5
 }
 
+order += "volume master"
 order += "load"
 order += "cpu_usage"
 order += "disk /"
@@ -55,4 +56,12 @@ cpu_usage {
 
 disk "/" {
         format = "%avail"
+}
+
+volume master {
+        format = "♪: %volume"
+        format_muted = "♪: muted (%volume)"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
 }
