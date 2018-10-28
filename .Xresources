@@ -15,6 +15,12 @@ URxvt.internalBorder: 4
 URxvt.iso14755:       false
 URxvt.keysym.Home:    \033[1~
 URxvt.keysym.End:     \033[4~
+URxvt.keysym.C-k:      font-size:increase
+URxvt.keysym.C-j:      font-size:decrease
+URxvt.keysym.C-S-Up:   font-size:incglobal
+URxvt.keysym.C-S-Down: font-size:decglobal
+URxvt.keysym.C-equal:  font-size:reset
+URxvt.keysym.C-slash:  font-size:show
 URxvt.font:           xft:xos4 Terminus:size=12
 URxvt.boldFont:       xft:xos4 Terminus:size=12
 URxvt.lineSpace:      0
@@ -54,8 +60,8 @@ URxvt.color14: #80bfaf
 URxvt.color7: #adadad
 URxvt.color15: #e8e8d3
 
-! clickable urls
-URxvt.perl-ext-common: default,matcher
+! Clickable urls, font size increasing and other extensions
+URxvt.perl-ext-common: default,matcher,font-size
 URxvt.url-launcher: /usr/bin/google-chrome-stable
 URxvt.matcher.button: 1
 
