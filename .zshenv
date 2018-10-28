@@ -25,6 +25,11 @@ if [[ -z "$LANG" ]]; then
 fi
 
 #
+# Terminal
+#
+export TERMINAL='urxvt'
+
+#
 # Paths
 #
 

@@ -1,3 +1,4 @@
+fpath=(~/.zsh/completions $fpath)
 autoload -Uz compinit promptinit
 compinit
 promptinit
@@ -24,8 +25,8 @@ source ~/.zsh/prompt.sh
 source ~/.zsh/history.sh
 
 # Chruby
-source /usr/share/chruby/chruby.sh
-source /usr/share/chruby/auto.sh
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
 
 # Source .zshrc_local for any workstation specific settings.
 test -r ~/.zshrc.local && source ~/.zshrc.local

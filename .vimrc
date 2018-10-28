@@ -180,19 +180,19 @@ function! FzyCommand(choice_command, vim_command)
 endfunction
 
 " Fzy key maps
-nnoremap <leader>e :call FzyCommand("ag . --nocolor -l -g ''", ":e")<cr>
-nnoremap <leader>v :call FzyCommand("ag . --nocolor -l -g ''", ":vs")<cr>
-nnoremap <leader>h :call FzyCommand("ag . --nocolor -l -g ''", ":sp")<cr>
-nnoremap <leader>s :call FzyCommand("ag . --nocolor -l -g ''", ":sp")<cr>
-nnoremap <leader>g :call FzyCommand("ag -g '' $(bundle show $(bundle list \| tail -n +2 \| cut -f 4 -d' ' \| fzy))", ":vs")<cr>
+nnoremap <leader>e :call FzyCommand("ag . -l -g ''", ":e")<cr>
+nnoremap <leader>v :call FzyCommand("ag . -l -g ''", ":vs")<cr>
+nnoremap <leader>h :call FzyCommand("ag . -l -g ''", ":sp")<cr>
+nnoremap <leader>s :call FzyCommand("ag . -l -g ''", ":sp")<cr>
+nnoremap <leader>g :call FzyCommand("ag . -l -g '' $(bundle show $(bundle list \| tail -n +2 \| cut -f 4 -d' ' \| fzy))", ":vs")<cr>
 
 " Open markdown files with Chrome.
 autocmd BufEnter *.md exe 'noremap <Leader><Leader>md :!google-chrome-unstable %:p<CR>'
 
 " Setup Ctrl-P search to use ag
 if executable("ag")
-  set grepprg=ag\ --nogroup\ --nocolor
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  set grepprg=ag\
+  let g:ctrlp_user_command = 'ag %s -l -g ""'
   let g:ctrlp_use_caching = 0
 endif
 
@@ -210,6 +210,6 @@ let g:jsx_ext_required = 0
 let &colorcolumn=join(range(81,999),",")
 
 " Ag search options
-let g:ag_prg = 'ag --nogroup --nocolor --column'
+let g:ag_prg = 'ag --column'
 
 " vim: set ft=vim:
