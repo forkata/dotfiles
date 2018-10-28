@@ -20,7 +20,8 @@ function bootstrap() {
   ln -sf "$(pwd)/.agignore" "$HOME/.agignore"
   ln -sf "$(pwd)/.tmux.conf" "$HOME/.tmux.conf"
   ln -sf "$(pwd)/.xbindkeysrc" "$HOME/.xbindkeysrc"
-  ln -sf "$(pwd)/.Xresource" "$HOME/.Xresources"
+  ln -sf "$(pwd)/.Xresources" "$HOME/.Xresources"
+  ln -sf "$(pwd)/.urxvt" "$HOME/.urxvt"
 
   # vim
   ln -sf "$(pwd)/.vimrc" "$HOME/.vimrc"
