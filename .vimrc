@@ -146,7 +146,10 @@ map <Leader>R :SyntasticReset<CR>
 
 " vim-test key maps
 let test#strategy = "vimux"
-nnoremap <Leader>t :TestFile --format documentation<CR>
+let test#ruby#rspec#options = {
+  \ 'file': '--format documentation'
+\}
+nnoremap <Leader>t :TestFile<CR>
 
 " .vimrc editing made easy
 nmap <silent> <Leader>c :vs $MYVIMRC<CR>
