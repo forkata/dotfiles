@@ -187,7 +187,7 @@ nnoremap <leader>e :call FzyCommand("ag . -l -g ''", ":e")<cr>
 nnoremap <leader>v :call FzyCommand("ag . -l -g ''", ":vs")<cr>
 nnoremap <leader>h :call FzyCommand("ag . -l -g ''", ":sp")<cr>
 nnoremap <leader>s :call FzyCommand("ag . -l -g ''", ":sp")<cr>
-nnoremap <leader>g :call FzyCommand("ag . -l -g '' $(bundle show $(bundle list \| tail -n +2 \| cut -f 4 -d' ' \| fzy))", ":vs")<cr>
+nnoremap <leader>g :call FzyCommand("ag . -l -g '' $(bundle show $(bundle list \| tail -n +2 \| cut -f 4 -d' ' \| fzy) \| tail -1)", ":vs")<cr>
 
 " Open markdown files with Chrome.
 autocmd BufEnter *.md exe 'noremap <Leader><Leader>md :!google-chrome-unstable %:p<CR>'
