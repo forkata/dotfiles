@@ -21,6 +21,7 @@ function bootstrap() {
   ln -sf "$(pwd)/.tmux.conf" "$HOME/.tmux.conf"
   ln -sf "$(pwd)/.xbindkeysrc" "$HOME/.xbindkeysrc"
   ln -sf "$(pwd)/.Xresources" "$HOME/.Xresources"
+  ln -sf "$(pwd)/.Xmodmap" "$HOME/.Xmodmap"
   ln -sf "$(pwd)/.urxvt" "$HOME/.urxvt"
 
   # vim
