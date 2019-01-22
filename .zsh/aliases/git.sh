@@ -5,6 +5,9 @@
 # What i committed today
 alias glT='git log --since="6am" --format="%s%n%b" --author="$(git config --global user.name)"| grep "^[^(Change-id)]"'
 
+alias ga='git add'
+alias gaa='git add . && echo "git added ."'
+
 alias gb='git branch'
 alias gba='git branch -a'
 
@@ -19,8 +22,7 @@ alias gl='git pull'
 alias gp='git push'
 alias gpl='git push --force-with-lease'
 
-alias ga='git add'
-alias gaa='git add . && echo "git added ."'
+alias grh='git reset HEAD'
 
 alias gst='git status'
 alias gsH='git show'

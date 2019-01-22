@@ -10,6 +10,7 @@
 
 [merge]
   tool = vimdiff
+  conflictstyle = diff3
 
 [push]
   default = simple

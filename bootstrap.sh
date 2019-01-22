@@ -24,8 +24,12 @@ function bootstrap() {
   ln -sf "$(pwd)/.Xmodmap" "$HOME/.Xmodmap"
   ln -sf "$(pwd)/.urxvt" "$HOME/.urxvt"
 
-  # vim
+  # link .vimrc
   ln -sf "$(pwd)/.vimrc" "$HOME/.vimrc"
+
+  # install Vundle.vim and plugins
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  vim +PluginInstall +qall
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then

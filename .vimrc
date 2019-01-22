@@ -88,6 +88,9 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
+" Write to swp file ever 250ms.
+set updatetime=250
+
 if has("autocmd")
   " set preferred spacing for these filetypes
   autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
