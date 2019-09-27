@@ -8,6 +8,9 @@
 [github]
   user = forkata
 
+[commit]
+  cleanup = scissors
+
 [merge]
   tool = vimdiff
   conflictstyle = diff3
@@ -22,6 +25,7 @@
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   pushf = push --force-with-lease
   pr = "!f() { git log --merges --ancestry-path --oneline $1..master | grep 'pull request' | tail -n1 | awk '{ print $5 }'; }; f"
+  flog = reflog --pretty=format:'%C(bold cyan)%h%C(reset) %C(blue)%cd %C(bold green)%s %C(bold cyan)%an%Creset%C(bold red)%d' --abbrev-commit --date=short
 
 [core]
   excludesfile = ~/.gitignore_global

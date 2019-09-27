@@ -46,7 +46,7 @@ path=(
   /usr/local/heroku/bin
   /usr/local/go/bin
   ${HOME}/bin
-  ${HOME}/Projects/android-sdk-macosx/platform-tools
+  ${HOME}/.local/bin
   $path
 )
 

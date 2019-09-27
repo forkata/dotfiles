@@ -15,7 +15,6 @@ function bootstrap() {
   ln -sf "$(pwd)/.git-template" "$HOME/.git-template"
 
   # dev
-  ln -sf "$(pwd)/.bundle" "$HOME/.bundle"
   ln -sf "$(pwd)/.ackrc" "$HOME/.ackrc"
   ln -sf "$(pwd)/.agignore" "$HOME/.agignore"
   ln -sf "$(pwd)/.tmux.conf" "$HOME/.tmux.conf"
@@ -24,8 +23,9 @@ function bootstrap() {
   ln -sf "$(pwd)/.Xmodmap" "$HOME/.Xmodmap"
   ln -sf "$(pwd)/.urxvt" "$HOME/.urxvt"
 
-  # link .vimrc
+  # vim
   ln -sf "$(pwd)/.vimrc" "$HOME/.vimrc"
+  mkdir -p ~/.vim/tmp
 
   # install Vundle.vim and plugins
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
