@@ -1,5 +1,5 @@
 " Debian system-wide default configuration Vim
-set encoding=utf-8
+" set encoding=utf-8
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()

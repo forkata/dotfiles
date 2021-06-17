@@ -34,9 +34,14 @@ tags
 
 # Docker #
 ##########
-# Dockerfile
-# fig.yml
+Dockerfile
+fig.yml
 
 # Cypress #
 ###########
 test-results/
+
+# Editor Configs #
+# ############## #
+.idea
+.vscode

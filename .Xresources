@@ -1,10 +1,12 @@
 Xft.antialias: 1
 Xft.autohint: -1
-Xft.dpi: 96
+Xft.dpi:314
 Xft.hinting: 1
 Xft.hintstyle: hintfull
 Xft.lcdfilter: lcddefault
 Xft.rgba: rgb
+
+Xcursor.size: 38
 
 URxvt.depth:          32
 URxvt.geometry:       90x30
@@ -21,8 +23,8 @@ URxvt.keysym.C-S-Up:   font-size:incglobal
 URxvt.keysym.C-S-Down: font-size:decglobal
 URxvt.keysym.C-equal:  font-size:reset
 URxvt.keysym.C-slash:  font-size:show
-URxvt.font:           xft:Terminus:size=12
-URxvt.boldFont:       xft:Terminus:size=12
+URxvt.font:           xft:Monospace:pixelsize=24
+URxvt.boldFont:       xft:Monospace:pixelsize=24
 URxvt.lineSpace:      0
 
 URxvt.scrollBar: false
@@ -63,7 +65,7 @@ URxvt.color15: #e8e8d3
 ! Clickable urls, font size increasing and other extensions
 URxvt.perl-ext-common: default,matcher,font-size
 URxvt.url-launcher: /usr/bin/google-chrome-stable
-URxvt.matcher.button: 1
+! URxvt.matcher.button: 1
 
 ! ------------------------------------------------------------------------------
 ! ROFI Color theme
