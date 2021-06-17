@@ -3,13 +3,15 @@
 
 [user]
   name = Chris Todorov
-  email = ctodorov@juul.com
+  email = chris [at] super.gd
+  signingkey = 030F79AF
 
 [github]
   user = forkata
 
 [commit]
   cleanup = scissors
+  verbose = true
 
 [merge]
   tool = vimdiff

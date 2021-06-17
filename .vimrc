@@ -54,6 +54,7 @@ Plugin 'sjl/gundo.vim'
 " fzy stuff
 Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
+Plugin 'jremmen/vim-ripgrep'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Dkendal/fzy-vim'
 
@@ -71,7 +72,7 @@ filetype off                   " required!
 let &runtimepath.=',~/.vim/bundle/ale'
 let g:ale_linters = {
 \   'javascript': ['eslint', 'prettier'],
-\   'ruby': ['breakman', 'reek', 'rubocop', 'ruby'],
+\   'ruby': ['breakman', 'reek', 'ruby', 'standardrb'],
 \   'css': ['stylelint'],
 \   'sass': ['stylelint'],
 \   'scss': ['stylelint'],
@@ -139,7 +140,6 @@ map <Leader>W :FixWhitespace<CR>
 
 " Dispatch stuff
 map <Leader>r :call RunCurrentSpecFile()<CR>
-map <Leader>n :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 
 map <Leader>E :Extradite<CR>
@@ -152,7 +152,8 @@ let test#strategy = "vimux"
 let test#ruby#rspec#options = {
   \ 'file': '--format documentation'
 \}
-nnoremap <Leader>t :TestFile<CR>
+nmap <silent> <Leader>t :TestFile<CR>
+nmap <silent> <Leader>n :TestNearest<CR>
 
 " .vimrc editing made easy
 nmap <silent> <Leader>c :vs $MYVIMRC<CR>
@@ -186,11 +187,11 @@ function! FzyCommand(choice_command, vim_command)
 endfunction
 
 " Fzy key maps
-nnoremap <leader>e :call FzyCommand("ag . -l -g ''", ":e")<cr>
-nnoremap <leader>v :call FzyCommand("ag . -l -g ''", ":vs")<cr>
-nnoremap <leader>h :call FzyCommand("ag . -l -g ''", ":sp")<cr>
-nnoremap <leader>s :call FzyCommand("ag . -l -g ''", ":sp")<cr>
-nnoremap <leader>g :call FzyCommand("ag . -l -g '' $(bundle show $(bundle list \| tail -n +2 \| cut -f 4 -d' ' \| fzy) \| tail -1)", ":vs")<cr>
+nnoremap <leader>e :call FzyCommand("rg . -l -g ''", ":e")<cr>
+nnoremap <leader>v :call FzyCommand("rg . -l -g ''", ":vs")<cr>
+nnoremap <leader>h :call FzyCommand("rg . -l -g ''", ":sp")<cr>
+nnoremap <leader>s :call FzyCommand("rg . -l -g ''", ":sp")<cr>
+nnoremap <leader>g :call FzyCommand("rg . -l -g '' $(bundle info --path $(bundle list \| tail -n +2 \| cut -f 4 -d' ' \| fzy) \| tail -1)", ":vs")<cr>
 
 " Open markdown files with Chrome.
 autocmd BufEnter *.md exe 'noremap <Leader><Leader>md :!google-chrome-unstable %:p<CR>'
@@ -217,5 +218,8 @@ let &colorcolumn=join(range(81,999),",")
 
 " Ag search options
 let g:ag_prg = 'ag --column'
+
+" jhawthorn's co-authored command
+command CoAuthor r! echo "Co-authored-by: $(git log --pretty='\%aN <\%aE>' | sort | uniq | fzy)"
 
 " vim: set ft=vim:

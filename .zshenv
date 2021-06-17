@@ -84,8 +84,9 @@ export PHANTOMJS_BIN=/usr/local/bin/phantomjs
 # Fix TERM since screen/tmux mess with it
 export TERM=screen-256color
 
-# Disable Guard notifications
+# Disable Guard notifications and Spring always!
 export GUARD_NOTIFY=false
+export DISABLE_SPRING=1
 
 # Explicitly set GOPATH
 export GOROOT=/usr/local/go

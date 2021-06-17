@@ -34,5 +34,9 @@ tags
 
 # Docker #
 ##########
-Dockerfile
-fig.yml
+# Dockerfile
+# fig.yml
+
+# Cypress #
+###########
+test-results/
