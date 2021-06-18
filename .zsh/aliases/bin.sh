@@ -14,7 +14,7 @@ alias s='DISPLAY=:0 scrot -s -e "mv \$f ~/Screenshots/"'
 
 # Use hub if it's installed
 if command -v hub &> /dev/null; then
-    eval "$(hub alias -s)"
+  eval "$(hub alias -s)"
 fi
 
 # Fzy awesomeness
@@ -25,3 +25,10 @@ function f() {
 alias fv='vim $(f)'
 alias p='cd ~/Projects/$(ls ~/Projects | fzy)'
 alias d='cd ~/Documents/$(ls ~/Documents | fzy)'
+alias s='cd ~/src/$(ls ~/src | fzy)'
+
+alias bx9="SOLIDUS_BRANCH=v2.9 bundle exec"
+alias bx10="SOLIDUS_BRANCH=v2.10 bundle exec"
+alias bx11="SOLIDUS_BRANCH=v2.11 bundle exec"
+
+alias sane="stty sane"

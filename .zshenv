@@ -78,9 +78,6 @@ if [[ ! -d "$TMPPREFIX" ]]; then
   mkdir -p "$TMPPREFIX"
 fi
 
-# PhantomJS
-export PHANTOMJS_BIN=/usr/local/bin/phantomjs
-
 # Fix TERM since screen/tmux mess with it
 export TERM=screen-256color
 
