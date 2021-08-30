@@ -23,8 +23,8 @@ URxvt.keysym.C-S-Up:   font-size:incglobal
 URxvt.keysym.C-S-Down: font-size:decglobal
 URxvt.keysym.C-equal:  font-size:reset
 URxvt.keysym.C-slash:  font-size:show
-URxvt.font:           xft:Monospace:pixelsize=24
-URxvt.boldFont:       xft:Monospace:pixelsize=24
+URxvt.font:           xft:JetBrains Mono:pixelsize=32
+URxvt.boldFont:       xft:JetBrains Mono:pixelsize=32
 URxvt.lineSpace:      0
 
 URxvt.scrollBar: false
