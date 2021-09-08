@@ -1,6 +1,6 @@
 # Some aliases
 alias mkdir="mkdir -p -v"
-alias ls="gls --group-directories-first --color=auto -la"
+alias ls="ls --group-directories-first --color=auto -la"
 alias xclip="xclip -selection c -i"
 alias json="python -mjson.tool"
 alias xml="xmllint --format -"
