@@ -27,6 +27,9 @@ function bootstrap() {
   ln -sf "$(pwd)/.vimrc" "$HOME/.vimrc"
   mkdir -p ~/.vim/tmp
 
+  # Ruby
+  ln -sf "$(pwd)/.ruby-version" "$HOME/.ruby-version"
+
   # install Vundle.vim and plugins
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
   vim +PluginInstall +qall
