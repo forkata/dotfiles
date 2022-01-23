@@ -5,17 +5,13 @@ alias xclip="xclip -selection c -i"
 alias json="python -mjson.tool"
 alias xml="xmllint --format -"
 alias ag="rg"
+alias fzf="fzy"
 
 # Rails/Ruby aliases
 alias be="bundle exec"
 
 # Scrot
 alias s='DISPLAY=:0 scrot -s -e "mv \$f ~/Screenshots/"'
-
-# Use hub if it's installed
-if command -v hub &> /dev/null; then
-  eval "$(hub alias -s)"
-fi
 
 # Fzy awesomeness
 function f() {

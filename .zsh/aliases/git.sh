@@ -37,3 +37,5 @@ alias gco='git checkout `git branch | fzy`'
 alias gcb='git checkout -b'
 
 alias delete_merged_branches='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
+
+alias rbm='git checkout master; git pull master; git checkout -; git rebase -i master'
