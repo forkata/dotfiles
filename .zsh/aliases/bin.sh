@@ -19,9 +19,16 @@ function f() {
 }
 
 alias fv='vim $(f)'
-alias p='cd ~/Projects/$(ls ~/Projects | fzy)'
-alias d='cd ~/Documents/$(ls ~/Documents | fzy)'
-alias s='cd ~/src/$(ls ~/src | fzy)'
+
+if [ Darwin = `uname` ]; then
+  alias p='cd ~/Projects/$(gls ~/Projects | fzy)'
+  alias d='cd ~/Documents/$(gls ~/Documents | fzy)'
+  alias s='cd ~/src/$(gls ~/src | fzy)'
+else
+  alias p='cd ~/Projects/$(ls ~/Projects | fzy)'
+  alias d='cd ~/Documents/$(ls ~/Documents | fzy)'
+  alias s='cd ~/src/$(ls ~/src | fzy)'
+fi
 
 alias bx9="SOLIDUS_BRANCH=v2.9 bundle exec"
 alias bx10="SOLIDUS_BRANCH=v2.10 bundle exec"
