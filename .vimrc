@@ -8,16 +8,17 @@ call vundle#rc()
 Plugin 'gmarik/Vundle.vim'
 
 " tpope is the man
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-sleuth'
-Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rhubarb'
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-sleuth'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
 
 " more mvment
 Plugin 'bkad/CamelCaseMotion'
@@ -25,12 +26,12 @@ Plugin 'terryma/vim-multiple-cursors'
 
 " rails stuff
 Plugin 'thoughtbot/vim-rspec'
-Plugin 'adammathys/vim-dispatch'
 Plugin 'int3/vim-extradite'
 
 " make preetty
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'rking/vim-detailed'
+Plugin 'NLKNguyen/papercolor-theme'
 
 " linting
 Plugin 'w0rp/ale'
@@ -47,6 +48,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'zerowidth/vim-copy-as-rtf'
 
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'sjl/gundo.vim'
@@ -147,6 +149,12 @@ map <Leader>B :Gblame<CR>
 map <Leader>S :SyntasticCheck<CR>
 map <Leader>R :SyntasticReset<CR>
 
+" Copy to RTF
+map <Leader>c :CopyRTF<CR>
+
+" Switch to light theme.
+map <Leader>p :colorscheme PaperColor \| set background=light<CR>
+
 " vim-test key maps
 let test#strategy = "vimux"
 let test#ruby#rspec#options = {
@@ -158,9 +166,6 @@ nmap <silent> <Leader>n :TestNearest<CR>
 " .vimrc editing made easy
 nmap <silent> <Leader>c :vs $MYVIMRC<CR>
 nmap <silent> <Leader>o :so $MYVIMRC<CR>
-
-" Finish pivotal stories
-nnoremap <Leader>p o<cr>[Finishes <esc>"*pA]
 
 " Indent/outdent block
 nmap %% $>i}``
@@ -219,7 +224,10 @@ let &colorcolumn=join(range(81,999),",")
 " Ag search options
 let g:ag_prg = 'ag --column'
 
-" jhawthorn's co-authored command
+" @jhawthorn's Co-Authored search - fzy searches git history authors.
 command CoAuthor r! echo "Co-authored-by: $(git log --pretty='\%aN <\%aE>' | sort | uniq | fzy)"
+
+ " SG Co-Authors list
+command CoAuthorSg r! echo "Co-authored-by: $(cat ~/.coauthors | sort | uniq | fzy)"
 
 " vim: set ft=vim:
