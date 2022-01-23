@@ -1,9 +1,10 @@
 [init]
   templatedir = ~/.git-template
+  defaultBranch = main
 
 [user]
   name = Chris Todorov
-  email = chris.todorov [at] gmail.com
+  email = chris.todorov@gmail.com
   signingkey = 030F79AF
 
 [github]
