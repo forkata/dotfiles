@@ -1,6 +1,12 @@
 # Some aliases
 alias mkdir="mkdir -p -v"
-alias ls="ls --group-directories-first --color=auto -la"
+
+if [ Darwin = `uname` ]; then
+  alias ls="gls --group-directories-first --color=auto -la"
+else
+  alias ls="ls --group-directories-first --color=auto -la"
+fi
+
 alias xclip="xclip -selection c -i"
 alias json="python -mjson.tool"
 alias xml="xmllint --format -"

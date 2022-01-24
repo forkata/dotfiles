@@ -26,8 +26,13 @@ source ~/.zsh/prompt.sh
 source ~/.zsh/history.sh
 
 # Chruby
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
+if [ Darwin = `uname` ]; then
+  source /usr/local/opt/chruby/share/chruby/chruby.sh
+  source /usr/local/opt/chruby/share/chruby/auto.sh
+else
+  source /usr/local/share/chruby/chruby.sh
+  source /usr/local/share/chruby/auto.sh
+fi
 
 # Source .zshrc_local for any workstation specific settings.
 test -r ~/.zshrc.local && source ~/.zshrc.local
