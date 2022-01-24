@@ -153,7 +153,7 @@ map <Leader>R :SyntasticReset<CR>
 map <Leader>c :CopyRTF<CR>
 
 " Switch to light theme.
-map <Leader>p :colorscheme PaperColor \| set background=light<CR>
+map <Leader>p :colorscheme PaperColor \| set background=light \| :ALEToggle<CR>
 
 " vim-test key maps
 let test#strategy = "vimux"
