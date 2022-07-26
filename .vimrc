@@ -1,11 +1,12 @@
-" Debian system-wide default configuration Vim
+set nocompatible               " be iMproved
+filetype off                   " required!
 set encoding=utf-8
 
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#rc()
+call vundle#begin()
 
 " don't vungle with my Vungle
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 " tpope is the man
 Plugin 'tpope/vim-abolish'
@@ -13,6 +14,7 @@ Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-fugitive'
+Plugin 'int3/vim-extradite'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'tpope/vim-sensible'
@@ -23,10 +25,6 @@ Plugin 'tpope/vim-unimpaired'
 " more mvment
 Plugin 'bkad/CamelCaseMotion'
 Plugin 'terryma/vim-multiple-cursors'
-
-" rails stuff
-Plugin 'thoughtbot/vim-rspec'
-Plugin 'int3/vim-extradite'
 
 " make preetty
 Plugin 'nanotech/jellybeans.vim'
@@ -61,14 +59,15 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'Dkendal/fzy-vim'
 
 " testing
+Plugin 'thoughtbot/vim-rspec'
 Plugin 'benmills/vimux'
 Plugin 'janko-m/vim-test'
 
 " TypeScript server integration
 " Plugin 'Quramy/tsuquyomi'
 
-set nocompatible               " be iMproved
-filetype off                   " required!
+call vundle#end() " required
+filetype plugin indent on     " required!
 
 " Ale
 let &runtimepath.=',~/.vim/bundle/ale'
@@ -82,7 +81,6 @@ let g:ale_linters = {
 \   'typescript': ['tslint', 'tsserver']
 \}
 let g:ale_sign_column_always = 1
-filetype plugin indent on     " required!
 syntax on
 
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%{SL('CapsLockStatusline')}%#ErrorMsg#%{SL('SyntasticStatuslineFlag')}%*%=%-14.(%l,%c%V%)\ %P
@@ -152,7 +150,7 @@ map <Leader>R :SyntasticReset<CR>
 " Copy to RTF
 map <Leader>c :CopyRTF<CR>
 
-" Switch to light theme.
+" Switch to light theme and disable ALE (presentation mode).
 map <Leader>p :colorscheme PaperColor \| set background=light \| :ALEToggle<CR>
 
 " vim-test key maps
@@ -201,10 +199,10 @@ nnoremap <leader>g :call FzyCommand("rg . -l -g '' $(bundle info --path $(bundle
 " Open markdown files with Chrome.
 autocmd BufEnter *.md exe 'noremap <Leader><Leader>md :!google-chrome-unstable %:p<CR>'
 
-" Setup Ctrl-P search to use ag
-if executable("ag")
-  set grepprg=ag\
-  let g:ctrlp_user_command = 'ag %s -l -g ""'
+" Setup Ctrl-P search to use rg
+if executable("rg")
+  set grepprg=rg\
+  let g:ctrlp_user_command = 'rg %s -l -g ""'
   let g:ctrlp_use_caching = 0
 endif
 
