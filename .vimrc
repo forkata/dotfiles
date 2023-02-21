@@ -97,6 +97,10 @@ set expandtab
 " Write to swp file ever 250ms.
 set updatetime=250
 
+" Refresh buffer when it changes on disk. Only unchanged buffers will be
+" affected.
+set autoread
+
 if has("autocmd")
   " set preferred spacing for these filetypes
   autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
