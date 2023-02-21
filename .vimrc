@@ -234,6 +234,8 @@ let g:ag_prg = 'ag --column'
 " @jhawthorn's Co-Authored search - fzy searches git history authors.
 command CoAuthor r! echo "Co-authored-by: $(git log --pretty='\%aN <\%aE>' | sort | uniq | fzy)"
 
+command CoCoAuthor r! echo "Co-authored-by: $(git log --grep 'Co-authored-by:' | awk -F: '/Co-authored-by:/ {print $2}' | sort | uniq | fzy)"
+
  " SG Co-Authors list
 command CoAuthorSg r! echo "Co-authored-by: $(cat ~/.coauthors | sort | uniq | fzy)"
 
