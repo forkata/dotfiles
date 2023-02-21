@@ -2,72 +2,77 @@ set nocompatible               " be iMproved
 filetype off                   " required!
 set encoding=utf-8
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" don't vungle with my Vungle
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
 " tpope is the man
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-fugitive'
-Plugin 'int3/vim-extradite'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-rhubarb'
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-sleuth'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+" extension to fugitive
+Plug 'int3/vim-extradite'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 
 " more mvment
-Plugin 'bkad/CamelCaseMotion'
-Plugin 'terryma/vim-multiple-cursors'
+Plug 'bkad/CamelCaseMotion'
+Plug 'terryma/vim-multiple-cursors'
 
 " make preetty
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'rking/vim-detailed'
-Plugin 'NLKNguyen/papercolor-theme'
+Plug 'nanotech/jellybeans.vim'
+Plug 'rking/vim-detailed'
+Plug 'NLKNguyen/papercolor-theme'
 
 " linting
-Plugin 'w0rp/ale'
+Plug 'w0rp/ale'
 
 " syntax highlighting
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'briancollins/vim-jst'
-Plugin 'yaymukund/vim-rabl'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-lua-ftplugin'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'zerowidth/vim-copy-as-rtf'
+Plug 'kchmck/vim-coffee-script'
+Plug 'briancollins/vim-jst'
+Plug 'yaymukund/vim-rabl'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-lua-ftplugin'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'elixir-lang/vim-elixir'
+Plug 'leafgarland/typescript-vim'
+Plug 'zerowidth/vim-copy-as-rtf'
 
-Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'sjl/gundo.vim'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'sjl/gundo.vim'
 
 " fzy stuff
-Plugin 'mileszs/ack.vim'
-Plugin 'rking/ag.vim'
-Plugin 'jremmen/vim-ripgrep'
-Plugin 'kien/ctrlp.vim'
-Plugin 'Dkendal/fzy-vim'
+Plug 'mileszs/ack.vim'
+Plug 'rking/ag.vim'
+Plug 'jremmen/vim-ripgrep'
+Plug 'kien/ctrlp.vim'
+Plug 'Dkendal/fzy-vim'
 
 " testing
-Plugin 'thoughtbot/vim-rspec'
-Plugin 'benmills/vimux'
-Plugin 'janko-m/vim-test'
+Plug 'thoughtbot/vim-rspec'
+Plug 'benmills/vimux'
+Plug 'janko-m/vim-test'
+
+" Pass focus events to vim from tmux
+Plug 'tmux-plugins/vim-tmux-focus-events'
 
 " TypeScript server integration
-" Plugin 'Quramy/tsuquyomi'
+" Plug 'Quramy/tsuquyomi'
 
-call vundle#end() " required
-filetype plugin indent on     " required!
+call plug#end()
 
 " Ale
 let &runtimepath.=',~/.vim/bundle/ale'
