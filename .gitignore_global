@@ -31,6 +31,9 @@ vendor/bundle
 tags
 .scss-lint.yml
 .bundle/cache
+.env
+.yalc
+yalc.lock
 
 # Docker #
 ##########
