@@ -34,6 +34,7 @@ tags
 .env
 .yalc
 yalc.lock
+Session.vim
 
 # Docker #
 ##########

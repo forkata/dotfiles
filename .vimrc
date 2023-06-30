@@ -35,7 +35,7 @@ Plug 'rking/vim-detailed'
 Plug 'NLKNguyen/papercolor-theme'
 
 " linting
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 
 " syntax highlighting
 Plug 'kchmck/vim-coffee-script'
@@ -50,6 +50,7 @@ Plug 'mxw/vim-jsx'
 Plug 'elixir-lang/vim-elixir'
 Plug 'leafgarland/typescript-vim'
 Plug 'zerowidth/vim-copy-as-rtf'
+Plug 'kyoh86/vim-jsonl'
 
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'sjl/gundo.vim'
@@ -86,6 +87,7 @@ let g:ale_linters = {
 \   'typescript': ['tslint', 'tsserver']
 \}
 let g:ale_sign_column_always = 1
+let g:ale_virtualtext_cursor = 'disabled'
 syntax on
 
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%{SL('CapsLockStatusline')}%#ErrorMsg#%{SL('SyntasticStatuslineFlag')}%*%=%-14.(%l,%c%V%)\ %P
