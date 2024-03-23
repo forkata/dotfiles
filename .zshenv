@@ -86,4 +86,4 @@ export GUARD_NOTIFY=false
 export DISABLE_SPRING=1
 
 # Explicitly set GOPATH
-export GOROOT=/usr/local/go
+# export GOROOT=/usr/local/go
