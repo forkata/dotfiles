@@ -51,6 +51,7 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'leafgarland/typescript-vim'
 Plug 'zerowidth/vim-copy-as-rtf'
 Plug 'kyoh86/vim-jsonl'
+Plug 'jparise/vim-graphql'
 
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'sjl/gundo.vim'
@@ -70,6 +71,9 @@ Plug 'janko-m/vim-test'
 " Pass focus events to vim from tmux
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
+" Github Copilot
+Plug 'github/copilot.vim'
+
 " TypeScript server integration
 " Plug 'Quramy/tsuquyomi'
 
@@ -79,7 +83,7 @@ call plug#end()
 let &runtimepath.=',~/.vim/bundle/ale'
 let g:ale_linters = {
 \   'javascript': ['eslint', 'prettier'],
-\   'ruby': ['breakman', 'reek', 'ruby', 'standardrb'],
+\   'ruby': ['breakman', 'ruby', 'standardrb'],
 \   'css': ['stylelint'],
 \   'sass': ['stylelint'],
 \   'scss': ['stylelint'],
@@ -232,6 +236,15 @@ let &colorcolumn=join(range(81,999),",")
 
 " Ag search options
 let g:ag_prg = 'ag --column'
+
+" netrw
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_winsize = 15
+" augroup ProjectDrawer
+"  autocmd!
+"  autocmd VimEnter * :Vexplore
+" augroup END
 
 " @jhawthorn's Co-Authored search - fzy searches git history authors.
 command CoAuthor r! echo "Co-authored-by: $(git log --pretty='\%aN <\%aE>' | sort | uniq | fzy)"
