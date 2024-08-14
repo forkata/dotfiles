@@ -30,6 +30,8 @@ function bootstrap() {
   # Ruby
   ln -sf "$(pwd)/.ruby-version" "$HOME/.ruby-version"
 
+  # Wezterm
+  ln -sf "$(pwd)/.wezterm.lua" "$HOME/.wezterm.lua"
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
