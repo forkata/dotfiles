@@ -24,7 +24,6 @@ Thumbs.db
 
 # Other #
 #########
-.ruby-version
 test-results.xml
 **/test-results.xml
 vendor/bundle

@@ -5,7 +5,7 @@
 [user]
   name = Chris Todorov
   email = chris.todorov@gmail.com
-  signingkey = 030F79AF
+  signingkey = F3FC218AC477C2E1
 
 [github]
   user = forkata
@@ -20,6 +20,9 @@
 
 [push]
   default = simple
+
+[pull]
+  rebase = true
 
 [branch]
   autosetuprebase = always
