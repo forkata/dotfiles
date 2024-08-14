@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 cd "$( dirname "$0" )"
-git pull origin master
+git pull origin main
 
 function bootstrap() {
   # zsh
@@ -30,9 +30,6 @@ function bootstrap() {
   # Ruby
   ln -sf "$(pwd)/.ruby-version" "$HOME/.ruby-version"
 
-  # install Vundle.vim and plugins
-  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-  vim +PluginInstall +qall
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
