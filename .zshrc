@@ -3,6 +3,9 @@ autoload -Uz compinit promptinit
 compinit
 promptinit
 
+# Teamocil zsh completions.
+compctl -g '~/.teamocil/*(:t:r)' teamocil
+
 setopt autocd
 
 # Dir colors.
@@ -27,8 +30,8 @@ source ~/.zsh/history.sh
 
 # Chruby
 if [ Darwin = `uname` ]; then
-  source /usr/local/opt/chruby/share/chruby/chruby.sh
-  source /usr/local/opt/chruby/share/chruby/auto.sh
+  source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+  source /opt/homebrew/opt/chruby/share/chruby/auto.sh
 else
   source /usr/local/share/chruby/chruby.sh
   source /usr/local/share/chruby/auto.sh
