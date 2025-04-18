@@ -87,3 +87,6 @@ export DISABLE_SPRING=1
 
 # Explicitly set GOPATH
 # export GOROOT=/usr/local/go
+
+# Add Rust / Cargo path - used by ruby-install for YJIT
+. "$HOME/.cargo/env"

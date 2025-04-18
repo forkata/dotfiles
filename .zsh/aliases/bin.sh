@@ -36,8 +36,4 @@ else
   alias s='cd ~/src/"$(ls ~/src | fzy)"'
 fi
 
-alias bx9="SOLIDUS_BRANCH=v2.9 bundle exec"
-alias bx10="SOLIDUS_BRANCH=v2.10 bundle exec"
-alias bx11="SOLIDUS_BRANCH=v2.11 bundle exec"
-
 alias sane="stty sane"
