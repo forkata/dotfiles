@@ -49,7 +49,9 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'elixir-lang/vim-elixir'
 Plug 'leafgarland/typescript-vim'
-Plug 'zerowidth/vim-copy-as-rtf'
+if has('macunix')
+  Plug 'zerowidth/vim-copy-as-rtf'
+endif
 Plug 'kyoh86/vim-jsonl'
 Plug 'jparise/vim-graphql'
 
