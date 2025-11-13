@@ -9,7 +9,7 @@
 # Logs and databases #
 ######################
 *.log
-*.sql
+# *.sql
 *.sqlite
 
 # OS generated files #
@@ -30,10 +30,13 @@ vendor/bundle
 tags
 .scss-lint.yml
 .bundle/cache
+.bundle/config
 .env
 .yalc
 yalc.lock
 Session.vim
+.idea
+.erb_lint_cache
 
 # Docker #
 ##########
@@ -43,3 +46,9 @@ Session.vim
 # Cypress #
 ###########
 test-results/
+
+# Agents #
+##########
+CLAUDE.md
+.claude
+.mcp.json
