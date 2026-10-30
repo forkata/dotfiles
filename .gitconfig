@@ -51,3 +51,12 @@
 
 [include]
   path = ~/.gitconfig.local
+
+[gc]
+  reflogExpire = 365.days
+  reflogExpireUnreachable = 365.days
+
+[absorb]
+  maxStack = 50
+[credential "https://git.heroku.com"]
+  helper = !heroku git:credentials
