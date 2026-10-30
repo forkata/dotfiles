@@ -84,16 +84,18 @@ call plug#end()
 " Ale
 let &runtimepath.=',~/.vim/bundle/ale'
 let g:ale_linters = {
-\   'javascript': ['eslint', 'prettier'],
-\   'ruby': ['breakman', 'ruby', 'standardrb'],
-\   'css': ['stylelint'],
-\   'sass': ['stylelint'],
-\   'scss': ['stylelint'],
-\   'haml': ['hamllint'],
-\   'typescript': ['tslint', 'tsserver']
-\}
+  \   'javascript': ['eslint', 'prettier'],
+  \   'ruby': ['breakman', 'ruby', 'rubocop'],
+  \   'css': ['stylelint'],
+  \   'sass': ['stylelint'],
+  \   'scss': ['stylelint'],
+  \   'haml': ['hamllint'],
+  \   'typescript': ['tslint', 'tsserver']
+  \ }
 let g:ale_sign_column_always = 1
 let g:ale_virtualtext_cursor = 'disabled'
+let g:ale_ruby_rubocop_executable = "bundle"
+let g:ale_set_highlights = 0
 syntax on
 
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%{SL('CapsLockStatusline')}%#ErrorMsg#%{SL('SyntasticStatuslineFlag')}%*%=%-14.(%l,%c%V%)\ %P
@@ -168,7 +170,9 @@ map <Leader>R :SyntasticReset<CR>
 map <Leader>c :CopyRTF<CR>
 
 " Switch to light theme and disable ALE (presentation mode).
-map <Leader>p :colorscheme PaperColor \| set background=light \| :ALEToggle<CR>
+map <Leader>p :colorscheme PaperColor \|
+    \ set background=light \|
+    \ :ALEToggle<CR>
 
 " vim-test key maps
 let test#strategy = "vimux"
@@ -212,6 +216,7 @@ nnoremap <leader>v :call FzyCommand("rg . -l -g ''", ":vs")<cr>
 nnoremap <leader>h :call FzyCommand("rg . -l -g ''", ":sp")<cr>
 nnoremap <leader>s :call FzyCommand("rg . -l -g ''", ":sp")<cr>
 nnoremap <leader>g :call FzyCommand("rg . -l -g '' $(bundle info --path $(bundle list \| tail -n +2 \| cut -f 4 -d' ' \| fzy) \| tail -1)", ":vs")<cr>
+nnoremap <leader>d :call FzyCommand("git status --porcelain \| colrm 1 3", ":e")<cr>
 
 " Open markdown files with Chrome.
 autocmd BufEnter *.md exe 'noremap <Leader><Leader>md :!google-chrome-unstable %:p<CR>'
